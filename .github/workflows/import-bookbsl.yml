@@ -12,25 +12,18 @@ permissions:
 jobs:
   import-site:
     runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
     steps:
       - uses: actions/checkout@v4
-      - name: Copy current BookBSL pages into repository root
+      - name: Copy BookBSL pages from existing GitHub repository
         run: |
           set -euo pipefail
-          base='https://guyorlov.github.io/bookbsl'
-          UA='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/153 Safari/537.36'
-          get_page() {
-            echo "COPY $1 -> $2"
-            curl --retry 3 --retry-delay 2 -A "$UA" -fsSL "$1" -o "$2"
-          }
-          get_page "$base/" index.html
-          get_page "$base/awareness.html" awareness.html
-          get_page "$base/data.html" data.html
-          get_page "$base/law.html" law.html
-          get_page "$base/privacy.html" privacy.html
-          get_page "$base/cookies.html" cookies.html
-          get_page "$base/terms.html" terms.html
-          get_page "$base/sitemap.xml" sitemap.xml
+          source_repo='GuyOrlov/guyorlov.github.io'
+          for file in index.html awareness.html data.html law.html privacy.html cookies.html terms.html sitemap.xml; do
+            echo "COPY bookbsl/$file"
+            gh api "repos/$source_repo/contents/bookbsl/$file?ref=main" --jq '.content' | tr -d '\n' | base64 -d > "$file"
+          done
           touch .nojekyll
       - name: Verify imported site
         run: |
