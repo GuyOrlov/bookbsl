@@ -12,13 +12,15 @@ permissions:
 jobs:
   import-site:
     runs-on: ubuntu-latest
+    env:
+      ARTIFACT_URL: 'https://sdmntprdenmarkeast.oaiusercontent.com/files/00000000-4884-8210-a94f-ca0f20fb666f/raw?se=2026-09-11T21%3A03%3A52Z&sp=r&sv=2026-02-06&sr=b&scid=c69c1ecb-f633-5085-a1f8-ae205ead0e43&skoid=ba81670d-b682-4d2d-9682-ac0ffdfb3fa1&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-09-11T02%3A18%3A04Z&ske=2026-09-12T02%3A18%3A04Z&sks=b&skv=2026-02-06&sig=JNKgayAT7hbxhJJoJqn4C7saUwg%2BUc/vPWqKDFi/inU%3D'
     steps:
       - uses: actions/checkout@v4
-      - name: Rebuild BookBSL migration package
+      - name: Download BookBSL migration package
         run: |
           set -euo pipefail
-          cat .migration/part00 .migration/part01 .migration/part02 .migration/part03 .migration/part04 > /tmp/bookbsl-migration.b64
-          base64 -d /tmp/bookbsl-migration.b64 > /tmp/bookbsl-migration.zip
+          curl -fsSL "$ARTIFACT_URL" -o /tmp/bookbsl-migration.zip
+          unzip -t /tmp/bookbsl-migration.zip
           rm -rf /tmp/bookbsl-migration
           mkdir -p /tmp/bookbsl-migration
           unzip -q /tmp/bookbsl-migration.zip -d /tmp/bookbsl-migration
