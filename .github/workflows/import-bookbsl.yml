@@ -1,0 +1,52 @@
+name: Import BookBSL site
+
+on:
+  push:
+    paths:
+      - '.github/workflows/import-bookbsl.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  import-site:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Copy current BookBSL pages into repository root
+        run: |
+          set -euo pipefail
+          base='https://guyorlov.com/bookbsl'
+          curl -fsSL "$base/" -o index.html
+          curl -fsSL "$base/awareness.html" -o awareness.html
+          curl -fsSL "$base/data.html" -o data.html
+          curl -fsSL "$base/law.html" -o law.html
+          curl -fsSL "$base/privacy.html" -o privacy.html
+          curl -fsSL "$base/cookies.html" -o cookies.html
+          curl -fsSL "$base/terms.html" -o terms.html
+          curl -fsSL "$base/sitemap.xml" -o sitemap.xml
+          touch .nojekyll
+      - name: Verify imported site
+        run: |
+          test -s index.html
+          test -s awareness.html
+          test -s data.html
+          test -s law.html
+          test -s privacy.html
+          test -s cookies.html
+          test -s terms.html
+          test -s sitemap.xml
+          grep -q 'BookBSL' index.html
+          grep -q 'Clear booking. Clear communication.' awareness.html
+      - name: Commit imported BookBSL site
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add index.html awareness.html data.html law.html privacy.html cookies.html terms.html sitemap.xml .nojekyll
+          if git diff --cached --quiet; then
+            echo 'BookBSL site already imported'
+          else
+            git commit -m 'Import BookBSL website into standalone repository'
+            git push
+          fi
