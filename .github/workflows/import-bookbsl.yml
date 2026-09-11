@@ -14,19 +14,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Diagnose current BookBSL URLs
-        run: |
-          set -u
-          base='https://guyorlov.com/bookbsl'
-          UA='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/153 Safari/537.36'
-          for path in '/' '/awareness.html' '/data.html' '/law.html' '/privacy.html' '/cookies.html' '/terms.html' '/sitemap.xml'; do
-            echo "CHECK $base$path"
-            curl -A "$UA" -L -sS -o /dev/null -w 'HTTP %{http_code} FINAL %{url_effective}\n' "$base$path" || true
-          done
       - name: Copy current BookBSL pages into repository root
         run: |
           set -euo pipefail
-          base='https://guyorlov.com/bookbsl'
+          base='https://guyorlov.github.io/bookbsl'
           UA='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/153 Safari/537.36'
           get_page() {
             echo "COPY $1 -> $2"
