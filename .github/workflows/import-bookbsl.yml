@@ -18,14 +18,18 @@ jobs:
         run: |
           set -euo pipefail
           base='https://guyorlov.com/bookbsl'
-          curl -fsSL "$base/" -o index.html
-          curl -fsSL "$base/awareness.html" -o awareness.html
-          curl -fsSL "$base/data.html" -o data.html
-          curl -fsSL "$base/law.html" -o law.html
-          curl -fsSL "$base/privacy.html" -o privacy.html
-          curl -fsSL "$base/cookies.html" -o cookies.html
-          curl -fsSL "$base/terms.html" -o terms.html
-          curl -fsSL "$base/sitemap.xml" -o sitemap.xml
+          UA='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/153 Safari/537.36'
+          get_page() {
+            curl --retry 3 --retry-delay 2 -A "$UA" -H 'Cache-Control: no-cache' -fsSL "$1" -o "$2"
+          }
+          get_page "$base/" index.html
+          get_page "$base/awareness.html" awareness.html
+          get_page "$base/data.html" data.html
+          get_page "$base/law.html" law.html
+          get_page "$base/privacy.html" privacy.html
+          get_page "$base/cookies.html" cookies.html
+          get_page "$base/terms.html" terms.html
+          get_page "$base/sitemap.xml" sitemap.xml
           touch .nojekyll
       - name: Verify imported site
         run: |
