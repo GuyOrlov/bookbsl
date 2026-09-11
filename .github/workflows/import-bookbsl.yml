@@ -12,18 +12,27 @@ permissions:
 jobs:
   import-site:
     runs-on: ubuntu-latest
-    env:
-      GH_TOKEN: ${{ github.token }}
     steps:
       - uses: actions/checkout@v4
-      - name: Copy BookBSL pages from existing GitHub repository
+      - name: Rebuild BookBSL migration package
         run: |
           set -euo pipefail
-          source_repo='GuyOrlov/guyorlov.github.io'
-          for file in index.html awareness.html data.html law.html privacy.html cookies.html terms.html sitemap.xml; do
-            echo "COPY bookbsl/$file"
-            gh api "repos/$source_repo/contents/bookbsl/$file?ref=main" --jq '.content' | tr -d '\n' | base64 -d > "$file"
-          done
+          cat .migration/part00 .migration/part01 .migration/part02 .migration/part03 .migration/part04 > /tmp/bookbsl-migration.b64
+          base64 -d /tmp/bookbsl-migration.b64 > /tmp/bookbsl-migration.zip
+          rm -rf /tmp/bookbsl-migration
+          mkdir -p /tmp/bookbsl-migration
+          unzip -q /tmp/bookbsl-migration.zip -d /tmp/bookbsl-migration
+      - name: Copy BookBSL pages into repository root
+        run: |
+          set -euo pipefail
+          cp /tmp/bookbsl-migration/index.html ./index.html
+          cp /tmp/bookbsl-migration/awareness.html ./awareness.html
+          cp /tmp/bookbsl-migration/data.html ./data.html
+          cp /tmp/bookbsl-migration/law.html ./law.html
+          cp /tmp/bookbsl-migration/privacy.html ./privacy.html
+          cp /tmp/bookbsl-migration/cookies.html ./cookies.html
+          cp /tmp/bookbsl-migration/terms.html ./terms.html
+          cp /tmp/bookbsl-migration/sitemap.xml ./sitemap.xml
           touch .nojekyll
       - name: Verify imported site
         run: |
