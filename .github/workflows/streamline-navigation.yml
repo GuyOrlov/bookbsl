@@ -1,0 +1,30 @@
+name: Streamline BookBSL navigation
+
+on:
+  push:
+    paths:
+      - '.github/workflows/streamline-navigation.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-navigation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Update BookBSL navigation
+        run: python .github/scripts/streamline_navigation.py
+      - name: Verify simplified navigation
+        run: |
+          grep -q 'Guides</a><a href="#support">Support</a><a class="header-cta navCta" href="#checker">Start checklist</a>' index.html
+          grep -q 'BSL awareness & resources' index.html
+          ! grep -q '<a href="awareness.html">Awareness</a><a href="data.html">Data</a><a href="law.html">Laws</a>' bsl-interpreter-work-meetings.html
+      - name: Commit navigation update
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add '*.html'
+          git commit -m "Simplify BookBSL navigation and group resources under Guides"
+          git push
