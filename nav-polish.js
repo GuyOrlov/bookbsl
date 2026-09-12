@@ -34,6 +34,7 @@
         color:#092A35!important;
         background:transparent!important;
         text-decoration:none!important;
+        font-size:.92rem!important;
         font-weight:800!important;
         line-height:1!important;
         white-space:nowrap!important;
@@ -70,7 +71,10 @@
         display:inline-flex!important;
         align-items:center!important;
         justify-content:center!important;
-        min-width:auto!important;
+        box-sizing:border-box!important;
+        width:auto!important;
+        min-width:0!important;
+        max-width:none!important;
         min-height:42px!important;
         height:42px!important;
         margin-left:10px!important;
@@ -81,7 +85,12 @@
         color:#fff!important;
         text-decoration:none!important;
         box-shadow:none!important;
+        font-size:.92rem!important;
+        font-weight:800!important;
+        line-height:1!important;
+        letter-spacing:-.01em!important;
         white-space:nowrap!important;
+        flex:0 0 auto!important;
         transition:background-color .16s ease,border-color .16s ease,transform .08s ease!important;
       }
 
