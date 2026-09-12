@@ -1,0 +1,50 @@
+name: Sync BookBSL navigation and footer
+
+on:
+  push:
+    paths:
+      - '.github/workflows/sync-global-navigation-footer.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync-layout:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Apply consistent header and footer
+        run: python .github/scripts/sync_global_navigation_footer.py
+      - name: Verify menu and footer on every public page
+        run: |
+          pages=(
+            index.html awareness.html data.html law.html terms.html privacy.html cookies.html
+            bsl-interpreter-cost.html bsl-interpreter-education.html bsl-interpreter-events.html
+            bsl-interpreter-healthcare.html bsl-interpreter-work-meetings.html online-bsl-interpreter.html
+            how-to-book-bsl-interpreter.html
+          )
+          for page in "${pages[@]}"; do
+            grep -q '>Guides</a><a href="awareness.html"' "$page"
+            grep -q '>Access preparation</a><a href="data.html"' "$page"
+            grep -q 'desktopCtaText">Start checklist' "$page"
+            grep -q 'bookbslFooterGrid' "$page"
+            grep -q '>Laws</a>' "$page"
+            grep -q '>Privacy</a>' "$page"
+            grep -q '>Terms</a>' "$page"
+            grep -q 'Cookies & analytics' "$page"
+          done
+      - name: Commit layout consistency update
+        run: |
+          if git diff --quiet; then
+            echo "No changes needed"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html awareness.html data.html law.html terms.html privacy.html cookies.html \
+            bsl-interpreter-cost.html bsl-interpreter-education.html bsl-interpreter-events.html \
+            bsl-interpreter-healthcare.html bsl-interpreter-work-meetings.html online-bsl-interpreter.html \
+            how-to-book-bsl-interpreter.html
+          git commit -m "Sync BookBSL navigation and footer across pages"
+          git push
