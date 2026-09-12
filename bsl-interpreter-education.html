@@ -42,6 +42,26 @@ h1 span{color:var(--blue)}
   .brandSub{display:none}
 }
 </style><script src="ga4-consent.js"></script>
+
+<style id="bookbsl-brand-consistency">
+/* BookBSL brand consistency across every page */
+:root{--bookbsl-blue:#2456B3;--bookbsl-ink:#092A35;--bookbsl-yellow:#FFD84D;--bookbsl-muted:#596970}
+.top{position:sticky;top:0;z-index:40;background:rgba(244,247,245,.96);backdrop-filter:blur(14px);border-bottom:1px solid rgba(9,42,53,.12)}
+.top .shell{width:min(1160px,calc(100% - 32px));margin:auto}
+.topin{min-height:68px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none;font-weight:950;letter-spacing:-.04em;font-size:1.3rem;line-height:1;color:var(--ink,var(--bookbsl-ink));flex:0 0 auto}
+.brandmark{width:42px;height:42px;border-radius:13px 13px 13px 5px;background:var(--ink,var(--bookbsl-ink));color:var(--yellow,var(--bookbsl-yellow));display:grid;place-items:center;font-size:.84rem;letter-spacing:-.03em;flex:0 0 auto}
+.brand b{color:var(--blue,var(--bookbsl-blue))}
+.brandSub{display:block;font-size:.65rem;letter-spacing:0;color:var(--muted,var(--bookbsl-muted));font-weight:750;margin-top:3px;line-height:1.15}
+h1 span{color:var(--blue,var(--bookbsl-blue))}
+@media(max-width:680px){
+  .top .shell{width:min(100% - 22px,1160px)}
+  .topin{min-height:62px;gap:10px}
+  .brand{font-size:1rem;gap:8px}
+  .brandmark{width:34px;height:34px;font-size:.72rem;border-radius:11px 11px 11px 4px}
+  .brandSub{display:none!important}
+}
+</style>
 </head>
 <body><header class="top"><div class="shell topin"><a class="brand" href="./"><span class="brandmark">BSL</span><span>Book<b>BSL</b><small class="brandSub">Clear booking. Clear communication.</small></span></a><nav class="topnav" aria-label="Main navigation"><a href="./#guides">Guides</a><a href="./#checker">Start checklist</a><a href="awareness.html">Awareness</a><a href="data.html">Data</a><a href="law.html">Laws</a></nav></div></header>
 <main><section class="hero"><div class="shell"><span class="kicker">Schools, colleges, universities & courses</span><h1>Booking BSL interpreting for <span>education and training</span></h1><p class="lead">Education bookings can involve specialist vocabulary, long sessions and changing timetables. Good preparation helps interpreters support communication effectively.</p></div></section>

@@ -13,8 +13,28 @@ h1{font-size:clamp(2.6rem,7vw,5rem);line-height:.98;letter-spacing:-.05em;color:
 .btn{display:inline-block;text-decoration:none;background:var(--ink);color:#fff;padding:12px 18px;border-radius:999px;font-weight:900;margin-top:10px}
 .related{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.related a{background:#fff;border:1px solid var(--line);border-radius:16px;padding:13px;text-decoration:none;font-weight:800}
 footer{padding:30px 0;color:var(--muted);font-size:.9rem}@media(max-width:680px){.topin{align-items:flex-start;flex-direction:column;padding:14px 0}.related{grid-template-columns:1fr}}
-table{width:100%;border-collapse:collapse;background:white}th,td{padding:12px;border-bottom:1px solid #ddd;text-align:left}</style></head>
-<body><main class="shell" style="padding:40px 0"><h1 style="font-size:2.4rem">BookBSL site statistics</h1><p>Session-based page popularity counters plus the main booking funnel counters. Search Console remains the source for Google impressions and clicks.</p>
+table{width:100%;border-collapse:collapse;background:white}th,td{padding:12px;border-bottom:1px solid #ddd;text-align:left}</style>
+<style id="bookbsl-brand-consistency">
+/* BookBSL brand consistency across every page */
+:root{--bookbsl-blue:#2456B3;--bookbsl-ink:#092A35;--bookbsl-yellow:#FFD84D;--bookbsl-muted:#596970}
+.top{position:sticky;top:0;z-index:40;background:rgba(244,247,245,.96);backdrop-filter:blur(14px);border-bottom:1px solid rgba(9,42,53,.12)}
+.top .shell{width:min(1160px,calc(100% - 32px));margin:auto}
+.topin{min-height:68px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none;font-weight:950;letter-spacing:-.04em;font-size:1.3rem;line-height:1;color:var(--ink,var(--bookbsl-ink));flex:0 0 auto}
+.brandmark{width:42px;height:42px;border-radius:13px 13px 13px 5px;background:var(--ink,var(--bookbsl-ink));color:var(--yellow,var(--bookbsl-yellow));display:grid;place-items:center;font-size:.84rem;letter-spacing:-.03em;flex:0 0 auto}
+.brand b{color:var(--blue,var(--bookbsl-blue))}
+.brandSub{display:block;font-size:.65rem;letter-spacing:0;color:var(--muted,var(--bookbsl-muted));font-weight:750;margin-top:3px;line-height:1.15}
+h1 span{color:var(--blue,var(--bookbsl-blue))}
+@media(max-width:680px){
+  .top .shell{width:min(100% - 22px,1160px)}
+  .topin{min-height:62px;gap:10px}
+  .brand{font-size:1rem;gap:8px}
+  .brandmark{width:34px;height:34px;font-size:.72rem;border-radius:11px 11px 11px 4px}
+  .brandSub{display:none!important}
+}
+</style>
+</head>
+<body><header class="top"><div class="shell topin"><a class="brand" href="./"><span class="brandmark">BSL</span><span>Book<b>BSL</b><small class="brandSub">Clear booking. Clear communication.</small></span></a><nav class="topnav" aria-label="Main navigation"><a href="./#guides">Guides</a><a href="./#checker">Start checklist</a><a href="awareness.html">Awareness</a><a href="data.html">Data</a><a href="law.html">Laws</a></nav></div></header><main class="shell" style="padding:40px 0"><h1 style="font-size:2.4rem">BookBSL <span>site statistics</span></h1><p>Session-based page popularity counters plus the main booking funnel counters. Search Console remains the source for Google impressions and clicks.</p>
 <h2>Pages</h2><table><thead><tr><th>Page</th><th>Sessions counted</th></tr></thead><tbody><tr><td>Home</td><td id="p-home">—</td></tr><tr><td>Booking a BSL interpreter for events</td><td id="p-bsl-interpreter-events-html">—</td></tr><tr><td>Booking a BSL interpreter for work and meetings</td><td id="p-bsl-interpreter-work-meetings-html">—</td></tr><tr><td>Booking an online BSL interpreter</td><td id="p-online-bsl-interpreter-html">—</td></tr><tr><td>How much does a BSL interpreter cost?</td><td id="p-bsl-interpreter-cost-html">—</td></tr><tr><td>How to book a BSL interpreter in the UK</td><td id="p-how-to-book-bsl-interpreter-html">—</td></tr><tr><td>Arranging BSL interpreting for healthcare</td><td id="p-bsl-interpreter-healthcare-html">—</td></tr><tr><td>Booking BSL interpreting for education and training</td><td id="p-bsl-interpreter-education-html">—</td></tr><tr><td>Deaf awareness</td><td id="p-awareness-html">—</td></tr><tr><td>Data & evidence</td><td id="p-data-html">—</td></tr><tr><td>BSL laws</td><td id="p-law-html">—</td></tr></tbody></table>
 <h2 style="margin-top:35px">Booking funnel</h2><table><tbody><tr><td>Homepage visits</td><td id="f-visits">—</td></tr><tr><td>Checklist starts</td><td id="f-starts">—</td></tr><tr><td>Checklist finishes</td><td id="f-finishes">—</td></tr><tr><td>Quote clicks</td><td id="f-quotes">—</td></tr></tbody></table></main>
 <script>
