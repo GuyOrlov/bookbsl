@@ -26,10 +26,25 @@ h1{font-size:clamp(2.6rem,7vw,5rem);line-height:.98;letter-spacing:-.05em;color:
 .btn{display:inline-block;text-decoration:none;background:var(--ink);color:#fff;padding:12px 18px;border-radius:999px;font-weight:900;margin-top:10px}
 .related{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.related a{background:#fff;border:1px solid var(--line);border-radius:16px;padding:13px;text-decoration:none;font-weight:800}
 footer{padding:30px 0;color:var(--muted);font-size:.9rem}@media(max-width:680px){.topin{align-items:flex-start;flex-direction:column;padding:14px 0}.related{grid-template-columns:1fr}}
+
+/* BookBSL guide brand polish */
+.top{position:sticky;top:0;z-index:40;background:rgba(244,247,245,.96);backdrop-filter:blur(14px)}
+.top .shell{width:min(1160px,calc(100% - 32px))}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none;font-weight:950;letter-spacing:-.04em;font-size:1.3rem;line-height:1;color:var(--ink)}
+.brandmark{width:42px;height:42px;border-radius:13px 13px 13px 5px;background:var(--ink);color:var(--yellow);display:grid;place-items:center;font-size:.84rem;letter-spacing:-.03em;flex:0 0 auto}
+.brand b{color:var(--blue)}
+.brandSub{display:block;font-size:.65rem;letter-spacing:0;color:var(--muted);font-weight:750;margin-top:3px;line-height:1.15}
+h1 span{color:var(--blue)}
+@media(max-width:680px){
+  .top .shell{width:min(100% - 22px,1160px)}
+  .brand{font-size:1rem;gap:8px}
+  .brandmark{width:34px;height:34px;font-size:.72rem;border-radius:11px 11px 11px 4px}
+  .brandSub{display:none}
+}
 </style><script src="ga4-consent.js"></script>
 </head>
-<body><header class="top"><div class="shell topin"><a class="brand" href="./">BookBSL</a><nav class="topnav" aria-label="Main navigation"><a href="./#guides">Guides</a><a href="./#checker">Start checklist</a><a href="awareness.html">Awareness</a><a href="data.html">Data</a><a href="law.html">Laws</a></nav></div></header>
-<main><section class="hero"><div class="shell"><span class="kicker">Healthcare communication access</span><h1>Arranging BSL interpreting for healthcare</h1><p class="lead">Healthcare communication must be clear and accessible. When arranging interpreting, confirm the Deaf person's communication preference and give the interpreter enough practical information to attend the appointment.</p></div></section>
+<body><header class="top"><div class="shell topin"><a class="brand" href="./"><span class="brandmark">BSL</span><span>Book<b>BSL</b><small class="brandSub">Clear booking. Clear communication.</small></span></a><nav class="topnav" aria-label="Main navigation"><a href="./#guides">Guides</a><a href="./#checker">Start checklist</a><a href="awareness.html">Awareness</a><a href="data.html">Data</a><a href="law.html">Laws</a></nav></div></header>
+<main><section class="hero"><div class="shell"><span class="kicker">Healthcare communication access</span><h1>Arranging BSL interpreting <span>for healthcare</span></h1><p class="lead">Healthcare communication must be clear and accessible. When arranging interpreting, confirm the Deaf person's communication preference and give the interpreter enough practical information to attend the appointment.</p></div></section>
 <section class="content"><div class="shell"><section class="card"><h2>Ask the Deaf person what they need</h2><p>Do not assume one communication method suits everyone. Confirm whether British Sign Language interpreting or another form of communication support is requested.</p></section>
 <section class="card"><h2>Give accurate appointment information</h2><p>Provide the date, arrival time, expected duration, hospital or clinic location, department and a contact number.</p></section>
 <section class="card"><h2>Protect privacy</h2><p>Only share information necessary for the interpreter to prepare and deliver the assignment. Follow the organisation's normal information-governance procedures.</p></section>
