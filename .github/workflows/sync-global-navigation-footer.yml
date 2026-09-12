@@ -30,7 +30,8 @@ jobs:
               grep -q '>Access preparation</a><a href="data.html"' "$page"
               grep -q 'desktopCtaText">Start checklist' "$page"
               grep -q 'bookbsl-global-nav-footer-20260912' "$page"
-              grep -q 'nav-polish.js?v=20260912-3' "$page"
+              grep -q 'nav-polish.js?v=20260912-4' "$page"
+              grep -q 'min-width:0!important' "$page"
               grep -q 'text-underline-offset:6px' "$page"
             fi
           done
