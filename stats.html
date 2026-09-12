@@ -233,5 +233,6 @@ async function get(k){try{const r=await fetch(API+k);if(!r.ok)return 0;const j=a
 const pages=[["Home","home"],["Booking a BSL interpreter for events","bsl-interpreter-events-html"],["Booking a BSL interpreter for work and meetings","bsl-interpreter-work-meetings-html"],["Booking an online BSL interpreter","online-bsl-interpreter-html"],["How much does a BSL interpreter cost?","bsl-interpreter-cost-html"],["How to book a BSL interpreter in the UK","how-to-book-bsl-interpreter-html"],["Arranging BSL interpreting for healthcare","bsl-interpreter-healthcare-html"],["Booking BSL interpreting for education and training","bsl-interpreter-education-html"],["Deaf awareness","awareness-html"],["Data & evidence","data-html"],["BSL laws","law-html"]];
 pages.forEach(async ([label,slug])=>document.getElementById('p-'+slug).textContent=(await get('bookbsl-guyorlov-page-'+slug)).toLocaleString('en-GB'));
 [['visits','bookbsl-guyorlov-202609-visits'],['starts','bookbsl-guyorlov-202609-starts'],['finishes','bookbsl-guyorlov-202609-finishes'],['quotes','bookbsl-guyorlov-202609-quotes']].forEach(async ([id,k])=>document.getElementById('f-'+id).textContent=(await get(k)).toLocaleString('en-GB'));
-</script><script src="nav-polish.js?v=20260912-3"></script>
+</script>
+<script src="nav-polish.js?v=20260912-3"></script>
 </body></html>
