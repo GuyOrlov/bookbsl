@@ -128,6 +128,18 @@ footer .footerGroupTitle{color:var(--yellow)!important}
   .topnav .btn.header-cta{display:none!important;}
 }
 
+
+/* Streamlined BookBSL navigation */
+.topnav{display:flex!important;align-items:center!important;gap:18px!important;flex-wrap:wrap!important}
+.topnav>a{font-weight:800!important;text-decoration:none!important;color:var(--ink)!important;white-space:nowrap!important}
+.topnav .header-cta{display:inline-flex!important;align-items:center!important;justify-content:center!important;min-height:42px!important;height:42px!important;padding:0 18px!important;border:2px solid var(--ink)!important;border-radius:999px!important;background:var(--ink)!important;color:#fff!important;line-height:1!important;box-shadow:none!important}
+.topnav .header-cta:hover{background:var(--blue)!important;border-color:var(--blue)!important}
+@media(max-width:680px){
+  .topnav{gap:10px!important}
+  .topnav>a:not(.header-cta){font-size:.76rem!important}
+  .topnav .header-cta{display:none!important}
+}
+
 </style>
 <script src="ga4-consent.js"></script>
 
@@ -152,7 +164,7 @@ h1 span{color:var(--blue,var(--bookbsl-blue))}
 </style>
 </head>
 <body>
-<header class="top"><div class="shell topin"><a class="brand" href="./"><span class="brandmark">BSL</span><span>Book<b>BSL</b><small class="brandSub">Clear booking. Clear communication.</small></span></a><nav class="topnav" aria-label="Main navigation"><a href="./#guides">Guides</a><a href="./#support">Support</a><a href="awareness.html">Awareness</a><a href="data.html">Data</a><a href="law.html">Laws</a><a class="header-cta" href="./#checker">Start checklist</a></nav></div></header>
+<header class="top"><div class="shell topin"><a class="brand" href="./"><span class="brandmark">BSL</span><span>Book<b>BSL</b><small class="brandSub">Clear booking. Clear communication.</small></span></a><nav class="topnav" aria-label="Main navigation"><a href="./#guides">Guides</a><a href="./#support">Support</a><a class="header-cta navCta" href="./#checker">Start checklist</a></nav></div></header>
 <main><section class="hero"><div class="shell"><span class="kicker">Terms</span><h1>BookBSL <span>terms of use.</span></h1><p class="lead">These terms apply when you use the BookBSL website, checklist and information pages. Separate booking terms may apply if cSeeker accepts an interpreting or communication-support booking.</p><p class="updated">Last updated 11 September 2026.</p></div></section>
 <section class="content"><div class="shell">
 <div class="card"><h2>1. Who runs BookBSL?</h2><p>BookBSL is a service by <strong>CSEEKER LIMITED</strong>, company number 08924049, registered in England and Wales. Registered office: 7 Old Bank Top, Birmingham, England, B31 3XD.</p></div>

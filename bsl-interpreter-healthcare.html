@@ -41,6 +41,18 @@ h1 span{color:var(--blue)}
   .brandmark{width:34px;height:34px;font-size:.72rem;border-radius:11px 11px 11px 4px}
   .brandSub{display:none}
 }
+
+/* Streamlined BookBSL navigation */
+.topnav{display:flex!important;align-items:center!important;gap:18px!important;flex-wrap:wrap!important}
+.topnav>a{font-weight:800!important;text-decoration:none!important;color:var(--ink)!important;white-space:nowrap!important}
+.topnav .header-cta{display:inline-flex!important;align-items:center!important;justify-content:center!important;min-height:42px!important;height:42px!important;padding:0 18px!important;border:2px solid var(--ink)!important;border-radius:999px!important;background:var(--ink)!important;color:#fff!important;line-height:1!important;box-shadow:none!important}
+.topnav .header-cta:hover{background:var(--blue)!important;border-color:var(--blue)!important}
+@media(max-width:680px){
+  .topnav{gap:10px!important}
+  .topnav>a:not(.header-cta){font-size:.76rem!important}
+  .topnav .header-cta{display:none!important}
+}
+
 </style><script src="ga4-consent.js"></script>
 
 <style id="bookbsl-brand-consistency">
@@ -63,7 +75,7 @@ h1 span{color:var(--blue,var(--bookbsl-blue))}
 }
 </style>
 </head>
-<body><header class="top"><div class="shell topin"><a class="brand" href="./"><span class="brandmark">BSL</span><span>Book<b>BSL</b><small class="brandSub">Clear booking. Clear communication.</small></span></a><nav class="topnav" aria-label="Main navigation"><a href="./#guides">Guides</a><a href="./#checker">Start checklist</a><a href="awareness.html">Awareness</a><a href="data.html">Data</a><a href="law.html">Laws</a></nav></div></header>
+<body><header class="top"><div class="shell topin"><a class="brand" href="./"><span class="brandmark">BSL</span><span>Book<b>BSL</b><small class="brandSub">Clear booking. Clear communication.</small></span></a><nav class="topnav" aria-label="Main navigation"><a href="./#guides" aria-current="page">Guides</a><a href="./#support">Support</a><a class="header-cta navCta" href="./#checker">Start checklist</a></nav></div></header>
 <main><section class="hero"><div class="shell"><span class="kicker">Healthcare communication access</span><h1>Arranging BSL interpreting <span>for healthcare</span></h1><p class="lead">Healthcare communication must be clear and accessible. When arranging interpreting, confirm the Deaf person's communication preference and give the interpreter enough practical information to attend the appointment.</p></div></section>
 <section class="content"><div class="shell"><section class="card"><h2>Ask the Deaf person what they need</h2><p>Do not assume one communication method suits everyone. Confirm whether British Sign Language interpreting or another form of communication support is requested.</p></section>
 <section class="card"><h2>Give accurate appointment information</h2><p>Provide the date, arrival time, expected duration, hospital or clinic location, department and a contact number.</p></section>
