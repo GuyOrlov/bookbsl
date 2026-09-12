@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - '.github/workflows/bookbsl-seo-complete.yml'
+      - '.github/scripts/bookbsl_seo_complete.py'
   workflow_dispatch:
 
 permissions:
@@ -16,6 +17,17 @@ jobs:
       - uses: actions/checkout@v4
       - name: Apply BookBSL SEO improvements
         run: python .github/scripts/bookbsl_seo_complete.py
+      - name: Finish homepage SEO navigation and social card
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('index.html')
+          text = p.read_text(encoding='utf-8')
+          text = text.replace('<meta name="twitter:card" content="summary">', '<meta name="twitter:card" content="summary_large_image">')
+          if 'href="#guides"' not in text:
+              text = text.replace('<a href="./#support">Support</a>', '<a href="#guides">Guides</a><a href="./#support">Support</a>', 1)
+          p.write_text(text, encoding='utf-8')
+          PY
       - name: Verify files
         run: |
           test -f og-image.png
@@ -31,6 +43,9 @@ jobs:
           test -f bsl-interpreter-healthcare.html
           test -f bsl-interpreter-education.html
           grep -q 'og:image' index.html
+          grep -q 'summary_large_image' index.html
+          grep -q 'id="guides"' index.html
+          grep -q 'href="#guides"' index.html
           grep -q 'noindex,follow' privacy.html
           grep -q 'bsl-interpreter-events.html' sitemap.xml
       - name: Commit SEO update
