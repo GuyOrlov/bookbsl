@@ -1,0 +1,45 @@
+name: Unify BookBSL top navigation tabs
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/scripts/unify_top_nav_tabs.py'
+      - '.github/workflows/unify-top-nav-tabs.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  unify-nav:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Apply equal navigation tabs
+        run: python .github/scripts/unify_top_nav_tabs.py
+
+      - name: Verify equal width and blue interaction states
+        run: |
+          grep -q 'bookbsl-equal-nav-tabs-20260912' index.html
+          grep -q 'grid-template-columns:repeat(4,152px)' index.html
+          grep -q 'mobileNavLabel">Access<' index.html
+          grep -q 'background:var(--blue,#2456B3)!important' index.html
+          grep -q 'bookbsl-equal-nav-tabs-20260912' awareness.html
+          grep -q 'bookbsl-equal-nav-tabs-20260912' data.html
+          grep -q 'bookbsl-equal-nav-tabs-20260912' law.html
+          grep -q 'bookbsl-equal-nav-tabs-20260912' access-to-work-bsl-interpreter.html
+          grep -q 'bookbsl-equal-nav-tabs-20260912' bsl-interpreter-legal-official.html
+
+      - name: Commit navigation styling
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add '*.html'
+          if git diff --cached --quiet; then
+            echo 'No changes to commit'
+          else
+            git commit -m 'Unify BookBSL top navigation sizing and states'
+            git push
+          fi
