@@ -73,6 +73,67 @@
     style.textContent = `
       .bookbslMenuToggle{display:none}
       .bookbslMobilePanel{display:contents}
+
+      @media(min-width:901px){
+        .top .topin{
+          display:flex!important;
+          align-items:center!important;
+          justify-content:space-between!important;
+          gap:28px!important;
+        }
+        .top .topnav{
+          margin-left:auto!important;
+          display:flex!important;
+          align-items:center!important;
+          justify-content:flex-end!important;
+          gap:4px!important;
+          flex-wrap:nowrap!important;
+        }
+        .top .topnav>a:not(.header-cta){
+          display:inline-flex!important;
+          align-items:center!important;
+          justify-content:center!important;
+          min-height:42px!important;
+          padding:0 12px!important;
+          border-radius:999px!important;
+        }
+        .top .topnav>a:not(.header-cta):hover{
+          background:#fff!important;
+        }
+        .top .topnav .header-cta{
+          min-width:auto!important;
+          margin-left:8px!important;
+          padding:0 18px!important;
+        }
+        .hero .heroGrid{
+          grid-template-columns:minmax(0,1.10fr) minmax(430px,.78fr)!important;
+          gap:64px!important;
+        }
+        .hero .heroStart{
+          justify-self:end!important;
+          width:min(500px,100%)!important;
+          transform:translateX(14px);
+        }
+        .hero .actions{
+          display:grid!important;
+          grid-template-columns:1fr!important;
+          gap:10px!important;
+          max-width:500px!important;
+        }
+        .hero .actions .btn{
+          width:100%!important;
+          min-height:50px!important;
+          justify-content:center!important;
+        }
+      }
+      @media(min-width:901px) and (max-width:1200px){
+        .hero .heroGrid{
+          grid-template-columns:minmax(0,1fr) minmax(410px,.82fr)!important;
+          gap:46px!important;
+        }
+        .hero .heroStart{transform:none!important}
+      }
+
       @media(max-width:680px){
         .top{overflow:visible!important}
         .top .topin{
