@@ -62,7 +62,7 @@ STYLE = r'''
   color:#fff!important;
   transform:translateY(1px)!important;
 }
-.mobileNavLabel{display:none!important}
+.topnav .mobileNavLabel{display:none!important}
 
 @media(max-width:980px){
   .topnav{
@@ -86,8 +86,8 @@ STYLE = r'''
     padding:0 6px!important;
     font-size:.70rem!important;
   }
-  .desktopNavLabel{display:none!important}
-  .mobileNavLabel{display:inline!important}
+  .topnav .desktopNavLabel{display:none!important}
+  .topnav .mobileNavLabel{display:inline!important}
 }
 
 @media(max-width:390px){
@@ -98,7 +98,7 @@ STYLE = r'''
 '''
 
 style_re = re.compile(r'\n?<style id="' + re.escape(STYLE_ID) + r'">.*?</style>\n?', re.S)
-access_re = re.compile(r'(<a\b[^>]*href="awareness\.html"[^>]*>)(?:<span class="desktopNavLabel">Access preparation</span><span class="mobileNavLabel">Access</span>|Access preparation)(</a>)', re.I)
+mobile_access_markup = '<span class="desktopNavLabel">Access preparation</span><span class="mobileNavLabel">Access</span>'
 
 changed = []
 checked = []
@@ -109,18 +109,40 @@ for path in sorted(ROOT.glob('*.html')):
 
     checked.append(path.name)
     text = style_re.sub('\n', text)
-    text = access_re.sub(r'\1<span class="desktopNavLabel">Access preparation</span><span class="mobileNavLabel">Access</span>\2', text)
+
+    # Repair any previous mobile-label markup outside the header navigation.
+    text = text.replace(mobile_access_markup, 'Access preparation')
+
+    nav_match = re.search(r'(<nav class="topnav"[^>]*>)(.*?)(</nav>)', text, re.S)
+    if not nav_match:
+        raise RuntimeError(f'{path}: topnav markup not found')
+
+    nav_inner = nav_match.group(2)
+    nav_inner, access_count = re.subn(
+        r'(<a\b[^>]*href="awareness\.html"[^>]*>)Access preparation(</a>)',
+        r'\1' + mobile_access_markup + r'\2',
+        nav_inner,
+        count=1,
+        flags=re.I,
+    )
+    if access_count != 1:
+        raise RuntimeError(f'{path}: expected one Access preparation link in topnav, found {access_count}')
+
+    new_nav = nav_match.group(1) + nav_inner + nav_match.group(3)
+    text = text[:nav_match.start()] + new_nav + text[nav_match.end():]
 
     if '</head>' not in text:
         raise RuntimeError(f'{path}: missing </head>')
     text = text.replace('</head>', STYLE + '\n</head>', 1)
 
-    nav_match = re.search(r'<nav class="topnav"[^>]*>(.*?)</nav>', text, re.S)
-    if not nav_match:
-        raise RuntimeError(f'{path}: topnav markup not found')
-    anchor_count = len(re.findall(r'<a\b', nav_match.group(1)))
+    nav_check = re.search(r'<nav class="topnav"[^>]*>(.*?)</nav>', text, re.S)
+    anchor_count = len(re.findall(r'<a\b', nav_check.group(1)))
     if anchor_count != 4:
         raise RuntimeError(f'{path}: expected 4 top navigation links, found {anchor_count}')
+
+    # The short mobile label must exist only inside topnav, never in the footer/content.
+    if text.count('mobileNavLabel">Access<') != 1:
+        raise RuntimeError(f'{path}: mobile Access label leaked outside topnav')
 
     path.write_text(text, encoding='utf-8')
     changed.append(path.name)
@@ -133,7 +155,6 @@ for name in checked:
     assert STYLE_ID in check, name
     assert 'grid-template-columns:repeat(4,152px)' in check, name
     assert 'background:var(--blue,#2456B3)!important' in check, name
-    if 'awareness.html' in re.search(r'<nav class="topnav"[^>]*>(.*?)</nav>', check, re.S).group(1):
-        assert 'mobileNavLabel">Access<' in check, name
+    assert check.count('mobileNavLabel">Access<') == 1, name
 
 print(f'Unified top navigation tabs on {len(changed)} pages: ' + ', '.join(changed))
