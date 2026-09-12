@@ -10,7 +10,6 @@ PAGES = [
     "terms.html",
     "privacy.html",
     "cookies.html",
-    "stats.html",
     "access-to-work-bsl-interpreter.html",
     "bsl-interpreter-cost.html",
     "bsl-interpreter-education.html",
