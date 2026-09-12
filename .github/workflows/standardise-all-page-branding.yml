@@ -1,0 +1,39 @@
+name: Standardise BookBSL branding across all pages
+
+on:
+  push:
+    paths:
+      - '.github/workflows/standardise-all-page-branding.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  standardise-branding:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Apply BookBSL branding to every HTML page
+        run: python .github/scripts/standardise-all-page-branding.py
+
+      - name: Verify all pages
+        run: |
+          for f in *.html; do
+            grep -q 'Clear booking. Clear communication.' "$f"
+            grep -q 'bookbsl-brand-consistency' "$f"
+            grep -q 'brandmark' "$f"
+          done
+
+      - name: Commit branding consistency update
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add '*.html'
+          if git diff --cached --quiet; then
+            echo 'No changes needed'
+          else
+            git commit -m 'Standardise BookBSL branding across all pages'
+            git push
+          fi
