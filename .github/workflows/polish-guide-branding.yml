@@ -1,0 +1,48 @@
+name: Polish BookBSL guide branding
+
+on:
+  push:
+    paths:
+      - '.github/workflows/polish-guide-branding.yml'
+      - '.github/scripts/polish_guide_branding.py'
+      - '.github/scripts/bookbsl_seo_complete.py'
+      - 'bsl-interpreter-events.html'
+      - 'bsl-interpreter-work-meetings.html'
+      - 'online-bsl-interpreter.html'
+      - 'bsl-interpreter-cost.html'
+      - 'how-to-book-bsl-interpreter.html'
+      - 'bsl-interpreter-healthcare.html'
+      - 'bsl-interpreter-education.html'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  polish-guides:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Apply BookBSL guide brand polish
+        run: python .github/scripts/polish_guide_branding.py
+
+      - name: Verify guide branding
+        run: |
+          for f in bsl-interpreter-events.html bsl-interpreter-work-meetings.html online-bsl-interpreter.html bsl-interpreter-cost.html how-to-book-bsl-interpreter.html bsl-interpreter-healthcare.html bsl-interpreter-education.html; do
+            grep -q 'Clear booking. Clear communication.' "$f"
+            grep -q 'class="brandmark"' "$f"
+            grep -q '<h1>.*<span>.*</span></h1>' "$f"
+          done
+
+      - name: Commit guide branding update
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add bsl-interpreter-events.html bsl-interpreter-work-meetings.html online-bsl-interpreter.html bsl-interpreter-cost.html how-to-book-bsl-interpreter.html bsl-interpreter-healthcare.html bsl-interpreter-education.html
+          if git diff --cached --quiet; then
+            echo 'No changes needed'
+          else
+            git commit -m 'Polish BookBSL guide branding'
+            git push
+          fi
