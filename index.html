@@ -449,6 +449,7 @@ footer .footerGroupTitle{color:var(--yellow)!important}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://bookbsl.co.uk/#website","url":"https://bookbsl.co.uk/","name":"BookBSL","description":"A free UK checklist for preparing a British Sign Language interpreter booking enquiry.","inLanguage":"en-GB"},{"@type":"Service","@id":"https://bookbsl.co.uk/#service","name":"BookBSL British Sign Language interpreter booking support","serviceType":"British Sign Language interpreter booking preparation and communication support enquiries","url":"https://bookbsl.co.uk/","areaServed":{"@type":"Country","name":"United Kingdom"},"provider":{"@type":"Organization","name":"cSeeker Limited","identifier":"08924049","email":"bookings@cseeker.co.uk"}},{"@type":"FAQPage","@id":"https://bookbsl.co.uk/#faq-schema","mainEntity":[{"@type":"Question","name":"How do I book a BSL interpreter?","acceptedAnswer":{"@type":"Answer","text":"Confirm the Deaf person’s communication preference, then collect the date, times, venue or online platform, number of people needing support, recording plans and preparation material. BookBSL turns those details into a clear enquiry for availability and a quote."}},{"@type":"Question","name":"How much does a BSL interpreter cost?","acceptedAnswer":{"@type":"Answer","text":"Price can depend on booking length, location, travel, preparation, time of day, the number of interpreters or communication professionals required, and recording or livestreaming. BookBSL does not invent a fixed price; request a quote for the actual booking."}},{"@type":"Question","name":"Can I book an online or remote BSL interpreter?","acceptedAnswer":{"@type":"Answer","text":"Yes. BookBSL supports online, in-person and hybrid bookings. For remote bookings, add the platform such as Zoom or Microsoft Teams; the joining link can be supplied later."}},{"@type":"Question","name":"Do events and conferences need two BSL interpreters?","acceptedAnswer":{"@type":"Answer","text":"Sometimes. Duration, complexity, breaks, stage work, recording and livestreaming can affect whether one interpreter is suitable or a team is recommended. BookBSL flags longer or recorded bookings for review."}},{"@type":"Question","name":"Can BookBSL help with workplace and Access to Work interpreter bookings?","acceptedAnswer":{"@type":"Answer","text":"Yes. BookBSL can organise practical information for workplace meetings, training, interviews and other work-related BSL interpreter requests. Access to Work funding approval and reimbursement are separate from BookBSL."}},{"@type":"Question","name":"Can I request an NRCPD-registered BSL interpreter?","acceptedAnswer":{"@type":"Answer","text":"If registration or a particular professional qualification is required, include that requirement in the enquiry so cSeeker can check the booking needs and availability of an appropriate communication professional."}},{"@type":"Question","name":"What if the Deaf person does not use BSL?","acceptedAnswer":{"@type":"Answer","text":"Do not assume that every Deaf person wants a BSL interpreter. They may prefer speech-to-text, a lipspeaker, Deaf Relay or another form of communication support. Confirm the person’s preference first."}},{"@type":"Question","name":"What information should I send before the booking?","acceptedAnswer":{"@type":"Answer","text":"Useful preparation can include an agenda, slides, scripts, speaker names, specialist vocabulary, venue access information and recording or livestream details. Remaining information can be sent later if it is not ready."}}]}]}</script>
 <script src="ga4-consent.js?v=20260912-3"></script>
+<script src="nav-polish.js?v=20260912-3"></script>
 
 <style id="bookbsl-brand-consistency">
 /* BookBSL brand consistency across every page */
@@ -470,13 +471,12 @@ h1 span{color:var(--blue,var(--bookbsl-blue))}
 }
 </style>
 <style id="bookbsl-global-nav-footer-20260912">
-/* One BookBSL header and footer across all public pages */
+/* One BookBSL header and footer across every page with a BookBSL header */
 .top .shell{width:min(1160px,calc(100% - 32px))!important;margin:auto!important}
-.topin{min-height:68px!important;height:auto!important;display:flex!important;align-items:center!important;justify-content:space-between!important;gap:24px!important;padding:0!important}
-.topnav{display:flex!important;align-items:center!important;justify-content:flex-end!important;gap:12px!important;flex-wrap:nowrap!important}
+.topin{min-height:68px!important;height:auto!important;display:flex!important;align-items:center!important;justify-content:space-between!important;gap:32px!important;padding:0!important}
+.topnav{display:flex!important;align-items:center!important;justify-content:flex-end!important;gap:14px!important;flex-wrap:nowrap!important}
 .mobileCtaText{display:none}
 
-/* Desktop/tablet navigation: the JS wraps links in .bookbslMobilePanel, so style both structures. */
 @media(min-width:681px){
   .topnav>.bookbslMobilePanel{display:contents!important}
   .topnav>a:not(.header-cta),
@@ -493,7 +493,7 @@ h1 span{color:var(--blue,var(--bookbsl-blue))}
     color:var(--ink,#092A35)!important;
     white-space:nowrap!important;
     line-height:1!important;
-    transition:color .16s ease,background-color .16s ease,text-decoration-color .16s ease!important;
+    transition:color .16s ease,background-color .16s ease,transform .08s ease!important;
   }
   .topnav>a:not(.header-cta):hover,
   .topnav>a:not(.header-cta):focus-visible,
@@ -507,6 +507,8 @@ h1 span{color:var(--blue,var(--bookbsl-blue))}
     text-decoration-thickness:2px!important;
     text-underline-offset:6px!important;
   }
+  .topnav>a:not(.header-cta):active,
+  .topnav>.bookbslMobilePanel>a:not(.header-cta):active{transform:translateY(1px)!important}
   .topnav>a[aria-current="page"],
   .topnav>.bookbslMobilePanel>a[aria-current="page"]{
     color:var(--blue,#2456B3)!important;
@@ -522,7 +524,7 @@ h1 span{color:var(--blue,var(--bookbsl-blue))}
     min-height:42px!important;
     height:42px!important;
     padding:0 20px!important;
-    margin-left:8px!important;
+    margin-left:10px!important;
     border:2px solid var(--ink,#092A35)!important;
     border-radius:999px!important;
     background:var(--ink,#092A35)!important;
@@ -533,8 +535,9 @@ h1 span{color:var(--blue,var(--bookbsl-blue))}
     transition:background-color .16s ease,border-color .16s ease,transform .08s ease!important;
   }
   .topnav .header-cta:hover,
-  .topnav .header-cta:focus-visible{background:var(--blue,#2456B3)!important;border-color:var(--blue,#2456B3)!important;color:#fff!important;text-decoration:none!important}
-  .topnav .header-cta:active{background:var(--blue,#2456B3)!important;border-color:var(--blue,#2456B3)!important;transform:translateY(1px)!important}
+  .topnav .header-cta:focus-visible,
+  .topnav .header-cta:active{background:var(--blue,#2456B3)!important;border-color:var(--blue,#2456B3)!important;color:#fff!important;text-decoration:none!important}
+  .topnav .header-cta:active{transform:translateY(1px)!important}
 }
 
 .bookbslFooter{background:#092A35!important;color:#fff!important;padding:46px 0!important;margin:0!important;font-size:.92rem!important}
