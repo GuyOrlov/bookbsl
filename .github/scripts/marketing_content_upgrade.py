@@ -392,7 +392,7 @@ check_data = read('data.html')
 assert 'A specialist workforce at a glance.' in check_data
 assert 'What this means for your booking' in check_data
 assert 'barFill' in check_data
-assert 'pressureWrap' not in check_data
+assert 'id="accessSupplyPressure"' not in check_data
 
 check_awareness = read('awareness.html')
 assert 'before the meeting, appointment or event.' in check_awareness
