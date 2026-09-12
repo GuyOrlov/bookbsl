@@ -1,0 +1,34 @@
+name: Polish BookBSL desktop homepage
+
+on:
+  push:
+    paths:
+      - '.github/workflows/desktop-homepage-polish.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  polish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Apply desktop homepage polish
+        run: python .github/scripts/desktop_homepage_polish.py
+      - name: Verify desktop polish
+        run: |
+          grep -q 'bookbsl-desktop-home-polish-20260912' index.html
+          grep -q 'ga4-consent.js?v=20260912-3' index.html
+          grep -q 'grid-template-columns:minmax(0,1fr) 500px' index.html
+      - name: Commit homepage polish
+        run: |
+          if git diff --quiet; then
+            echo "No changes needed"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "Apply desktop homepage polish"
+          git push
