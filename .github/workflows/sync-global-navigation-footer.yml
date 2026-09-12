@@ -19,7 +19,7 @@ jobs:
       - name: Verify menu and footer on every public page
         run: |
           pages=(
-            index.html awareness.html data.html law.html terms.html privacy.html cookies.html stats.html
+            index.html awareness.html data.html law.html terms.html privacy.html cookies.html
             access-to-work-bsl-interpreter.html bsl-interpreter-cost.html bsl-interpreter-education.html
             bsl-interpreter-events.html bsl-interpreter-healthcare.html bsl-interpreter-legal-official.html
             bsl-interpreter-work-meetings.html online-bsl-interpreter.html how-to-book-bsl-interpreter.html
@@ -44,10 +44,10 @@ jobs:
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html awareness.html data.html law.html terms.html privacy.html cookies.html stats.html \
+          git add index.html awareness.html data.html law.html terms.html privacy.html cookies.html \
             access-to-work-bsl-interpreter.html bsl-interpreter-cost.html bsl-interpreter-education.html \
             bsl-interpreter-events.html bsl-interpreter-healthcare.html bsl-interpreter-legal-official.html \
             bsl-interpreter-work-meetings.html online-bsl-interpreter.html how-to-book-bsl-interpreter.html \
             how-far-ahead-book-bsl-interpreter.html one-or-two-bsl-interpreters.html
-          git commit -m "Sync improved BookBSL navigation across all pages"
+          git commit -m "Sync improved BookBSL navigation across all public pages"
           git push
