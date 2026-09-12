@@ -18,86 +18,10 @@ GUIDE_PAGES = {
 }
 
 STYLE_ID = "bookbsl-global-nav-footer-20260912"
-NAV_SCRIPT = '<script src="nav-polish.js?v=20260912-5"></script>'
+HEADER_STYLESHEET = '<link rel="stylesheet" href="bookbsl-header.css?v=20260912-1">'
 
 STYLE = f'''<style id="{STYLE_ID}">
-/* One BookBSL header and footer across every page with a BookBSL header */
-.top .shell{{width:min(1160px,calc(100% - 32px))!important;margin:auto!important}}
-.topin{{min-height:68px!important;height:auto!important;display:flex!important;align-items:center!important;justify-content:space-between!important;gap:32px!important;padding:0!important}}
-.topnav{{display:flex!important;align-items:center!important;justify-content:flex-end!important;gap:14px!important;flex-wrap:nowrap!important}}
-.mobileCtaText{{display:none}}
-
-@media(min-width:681px){{
-  .topnav>.bookbslMobilePanel{{display:contents!important}}
-  .topnav>a:not(.header-cta),
-  .topnav>.bookbslMobilePanel>a:not(.header-cta){{
-    display:inline-flex!important;
-    align-items:center!important;
-    justify-content:center!important;
-    min-height:42px!important;
-    padding:0 14px!important;
-    border-radius:999px!important;
-    text-decoration:none!important;
-    font-weight:800!important;
-    font-size:.92rem!important;
-    color:var(--ink,#092A35)!important;
-    white-space:nowrap!important;
-    line-height:1!important;
-    transition:color .16s ease,background-color .16s ease,transform .08s ease!important;
-  }}
-  .topnav>a:not(.header-cta):hover,
-  .topnav>a:not(.header-cta):focus-visible,
-  .topnav>a:not(.header-cta):active,
-  .topnav>.bookbslMobilePanel>a:not(.header-cta):hover,
-  .topnav>.bookbslMobilePanel>a:not(.header-cta):focus-visible,
-  .topnav>.bookbslMobilePanel>a:not(.header-cta):active{{
-    color:var(--blue,#2456B3)!important;
-    background:#fff!important;
-    text-decoration:underline!important;
-    text-decoration-thickness:2px!important;
-    text-underline-offset:6px!important;
-  }}
-  .topnav>a:not(.header-cta):active,
-  .topnav>.bookbslMobilePanel>a:not(.header-cta):active{{transform:translateY(1px)!important}}
-  .topnav>a[aria-current="page"],
-  .topnav>.bookbslMobilePanel>a[aria-current="page"]{{
-    color:var(--blue,#2456B3)!important;
-    text-decoration:underline!important;
-    text-decoration-thickness:2px!important;
-    text-underline-offset:6px!important;
-  }}
-  .topnav .header-cta{{
-    display:inline-flex!important;
-    align-items:center!important;
-    justify-content:center!important;
-    box-sizing:border-box!important;
-    width:auto!important;
-    min-width:0!important;
-    max-width:none!important;
-    min-height:42px!important;
-    height:42px!important;
-    padding:0 20px!important;
-    margin-left:10px!important;
-    border:2px solid var(--ink,#092A35)!important;
-    border-radius:999px!important;
-    background:var(--ink,#092A35)!important;
-    color:#fff!important;
-    text-decoration:none!important;
-    box-shadow:none!important;
-    font-size:.92rem!important;
-    font-weight:800!important;
-    line-height:1!important;
-    letter-spacing:-.01em!important;
-    white-space:nowrap!important;
-    flex:0 0 auto!important;
-    transition:background-color .16s ease,border-color .16s ease,transform .08s ease!important;
-  }}
-  .topnav .header-cta:hover,
-  .topnav .header-cta:focus-visible,
-  .topnav .header-cta:active{{background:var(--blue,#2456B3)!important;border-color:var(--blue,#2456B3)!important;color:#fff!important;text-decoration:none!important}}
-  .topnav .header-cta:active{{transform:translateY(1px)!important}}
-}}
-
+/* Shared BookBSL footer. Header/navigation is controlled by bookbsl-header.css. */
 .bookbslFooter{{background:#092A35!important;color:#fff!important;padding:46px 0!important;margin:0!important;font-size:.92rem!important}}
 .bookbslFooter .shell{{width:min(1160px,calc(100% - 32px))!important;margin:auto!important}}
 .bookbslFooterGrid{{display:grid!important;grid-template-columns:minmax(280px,1.35fr) repeat(3,minmax(135px,.55fr))!important;gap:34px!important;align-items:start!important}}
@@ -108,16 +32,9 @@ STYLE = f'''<style id="{STYLE_ID}">
 .bookbslFooterGroup a{{display:block!important;color:#fff!important;text-decoration:none!important;margin:8px 0!important;font-weight:700!important}}
 .bookbslFooterGroup a:hover{{text-decoration:underline!important;text-underline-offset:3px!important}}
 .bookbslFooterBottom{{border-top:1px solid rgba(255,255,255,.2)!important;margin-top:30px!important;padding-top:18px!important;color:#B8CBCD!important;font-size:.82rem!important}}
-
 @media(max-width:900px){{
   .bookbslFooterGrid{{grid-template-columns:1fr 1fr!important;gap:28px!important}}
   .bookbslFooterBrand{{grid-column:1/-1!important}}
-}}
-@media(max-width:680px){{
-  .top .shell{{width:min(100% - 22px,1160px)!important}}
-  .desktopCtaText{{display:none!important}}
-  .mobileCtaText{{display:inline!important}}
-  .brandSub{{display:none!important}}
 }}
 @media(max-width:500px){{
   .bookbslFooterGrid{{grid-template-columns:1fr!important}}
@@ -166,7 +83,7 @@ def header_for(name: str) -> str:
     return f'''<header class="top"><div class="shell topin"><a class="brand" href="./"><span class="brandmark">BSL</span><span>Book<b>BSL</b><small class="brandSub">Clear booking. Clear communication.</small></span></a><nav class="topnav" aria-label="Main navigation"><a href="./#guides"{guide_current}>Guides</a><a href="awareness.html"{prep_current}>Access preparation</a><a href="data.html"{data_current}>Data</a><a class="header-cta navCta" href="./#checker"><span class="desktopCtaText">Start checklist</span><span class="mobileCtaText">Checklist</span></a></nav></div></header>'''
 
 
-def replace_style(text: str) -> str:
+def replace_footer_style(text: str) -> str:
     existing = re.compile(rf'<style id="{re.escape(STYLE_ID)}">.*?</style>', re.S)
     if existing.search(text):
         return existing.sub(STYLE, text, count=1)
@@ -175,14 +92,14 @@ def replace_style(text: str) -> str:
     return text.replace("</head>", STYLE + "\n</head>", 1)
 
 
-def ensure_nav_script(text: str) -> str:
+def ensure_header_stylesheet_last(text: str) -> str:
+    # Remove the old JS desktop-polish layer completely; it caused page-to-page cascade differences.
     text = re.sub(r'\s*<script src="nav-polish\.js(?:\?[^\"]*)?"></script>', '', text)
-    ga4 = re.compile(r'(<script src="ga4-consent\.js(?:\?[^\"]*)?"></script>)')
-    if ga4.search(text):
-        return ga4.sub(r'\1\n' + NAV_SCRIPT, text, count=1)
-    if "</body>" in text:
-        return text.replace("</body>", NAV_SCRIPT + "\n</body>", 1)
-    raise RuntimeError("Missing </body>")
+    # Remove any older version of the canonical header stylesheet, then add one copy last in <head>.
+    text = re.sub(r'\s*<link rel="stylesheet" href="bookbsl-header\.css(?:\?[^\"]*)?">', '', text)
+    if "</head>" not in text:
+        raise RuntimeError("Missing </head>")
+    return text.replace("</head>", HEADER_STYLESHEET + "\n</head>", 1)
 
 
 pages = []
@@ -199,9 +116,9 @@ for path in pages:
     text = path.read_text(encoding="utf-8")
 
     header_pattern = re.compile(r'<header class="top">.*?</header>', re.S)
-    matches = header_pattern.findall(text)
-    if len(matches) != 1:
-        raise RuntimeError(f"Expected exactly one top header in {name}, found {len(matches)}")
+    headers = header_pattern.findall(text)
+    if len(headers) != 1:
+        raise RuntimeError(f"Expected exactly one top header in {name}, found {len(headers)}")
     text = header_pattern.sub(header_for(name), text, count=1)
 
     footer_pattern = re.compile(r'<footer(?:\s[^>]*)?>.*?</footer>', re.S)
@@ -211,8 +128,8 @@ for path in pages:
     if len(footers) == 1:
         text = footer_pattern.sub(FOOTER, text, count=1)
 
-    text = replace_style(text)
-    text = ensure_nav_script(text)
+    text = replace_footer_style(text)
+    text = ensure_header_stylesheet_last(text)
     path.write_text(text, encoding="utf-8")
 
-print(f"Updated shared BookBSL navigation on {len(pages)} HTML pages")
+print(f"Applied one canonical BookBSL header/navigation to {len(pages)} HTML pages")
