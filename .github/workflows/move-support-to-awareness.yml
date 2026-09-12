@@ -1,0 +1,36 @@
+name: Move BookBSL support to Awareness
+
+on:
+  push:
+    paths:
+      - '.github/workflows/move-support-to-awareness.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  move-support:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Move support content and navigation
+        run: python .github/scripts/move_support_to_awareness.py
+      - name: Verify support structure
+        run: |
+          grep -q 'href="awareness.html#support"' index.html
+          grep -q 'id="support"' awareness.html
+          grep -q 'BSL interpreter' awareness.html
+          grep -q 'Speech-to-text / live captions' awareness.html
+          if grep -q 'id="support"' index.html; then exit 1; fi
+      - name: Commit Support/Awareness restructure
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add '*.html'
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Move communication support content to Awareness"
+            git push
+          fi
