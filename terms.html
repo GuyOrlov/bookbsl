@@ -165,13 +165,70 @@ h1 span{color:var(--blue,var(--bookbsl-blue))}
 <style id="bookbsl-global-nav-footer-20260912">
 /* One BookBSL header and footer across all public pages */
 .top .shell{width:min(1160px,calc(100% - 32px))!important;margin:auto!important}
-.topin{min-height:68px!important;height:auto!important;display:flex!important;align-items:center!important;justify-content:space-between!important;gap:18px!important;padding:0!important}
-.topnav{display:flex!important;align-items:center!important;justify-content:flex-end!important;gap:20px!important;flex-wrap:nowrap!important}
-.topnav>a{text-decoration:none!important;font-weight:800!important;font-size:.9rem!important;color:var(--ink,#092A35)!important;white-space:nowrap!important;line-height:1.1!important}
-.topnav>a[aria-current="page"]{color:var(--blue,#2456B3)!important;text-decoration:underline!important;text-decoration-thickness:2px!important;text-underline-offset:6px!important}
-.topnav .header-cta{display:inline-flex!important;align-items:center!important;justify-content:center!important;box-sizing:border-box!important;min-height:42px!important;height:42px!important;padding:0 18px!important;border:2px solid var(--ink,#092A35)!important;border-radius:999px!important;background:var(--ink,#092A35)!important;color:#fff!important;text-decoration:none!important;box-shadow:none!important}
-.topnav .header-cta:hover{background:var(--blue,#2456B3)!important;border-color:var(--blue,#2456B3)!important}
+.topin{min-height:68px!important;height:auto!important;display:flex!important;align-items:center!important;justify-content:space-between!important;gap:24px!important;padding:0!important}
+.topnav{display:flex!important;align-items:center!important;justify-content:flex-end!important;gap:12px!important;flex-wrap:nowrap!important}
 .mobileCtaText{display:none}
+
+/* Desktop/tablet navigation: the JS wraps links in .bookbslMobilePanel, so style both structures. */
+@media(min-width:681px){
+  .topnav>.bookbslMobilePanel{display:contents!important}
+  .topnav>a:not(.header-cta),
+  .topnav>.bookbslMobilePanel>a:not(.header-cta){
+    display:inline-flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    min-height:42px!important;
+    padding:0 14px!important;
+    border-radius:999px!important;
+    text-decoration:none!important;
+    font-weight:800!important;
+    font-size:.92rem!important;
+    color:var(--ink,#092A35)!important;
+    white-space:nowrap!important;
+    line-height:1!important;
+    transition:color .16s ease,background-color .16s ease,text-decoration-color .16s ease!important;
+  }
+  .topnav>a:not(.header-cta):hover,
+  .topnav>a:not(.header-cta):focus-visible,
+  .topnav>a:not(.header-cta):active,
+  .topnav>.bookbslMobilePanel>a:not(.header-cta):hover,
+  .topnav>.bookbslMobilePanel>a:not(.header-cta):focus-visible,
+  .topnav>.bookbslMobilePanel>a:not(.header-cta):active{
+    color:var(--blue,#2456B3)!important;
+    background:#fff!important;
+    text-decoration:underline!important;
+    text-decoration-thickness:2px!important;
+    text-underline-offset:6px!important;
+  }
+  .topnav>a[aria-current="page"],
+  .topnav>.bookbslMobilePanel>a[aria-current="page"]{
+    color:var(--blue,#2456B3)!important;
+    text-decoration:underline!important;
+    text-decoration-thickness:2px!important;
+    text-underline-offset:6px!important;
+  }
+  .topnav .header-cta{
+    display:inline-flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    box-sizing:border-box!important;
+    min-height:42px!important;
+    height:42px!important;
+    padding:0 20px!important;
+    margin-left:8px!important;
+    border:2px solid var(--ink,#092A35)!important;
+    border-radius:999px!important;
+    background:var(--ink,#092A35)!important;
+    color:#fff!important;
+    text-decoration:none!important;
+    box-shadow:none!important;
+    white-space:nowrap!important;
+    transition:background-color .16s ease,border-color .16s ease,transform .08s ease!important;
+  }
+  .topnav .header-cta:hover,
+  .topnav .header-cta:focus-visible{background:var(--blue,#2456B3)!important;border-color:var(--blue,#2456B3)!important;color:#fff!important;text-decoration:none!important}
+  .topnav .header-cta:active{background:var(--blue,#2456B3)!important;border-color:var(--blue,#2456B3)!important;transform:translateY(1px)!important}
+}
 
 .bookbslFooter{background:#092A35!important;color:#fff!important;padding:46px 0!important;margin:0!important;font-size:.92rem!important}
 .bookbslFooter .shell{width:min(1160px,calc(100% - 32px))!important;margin:auto!important}
@@ -185,23 +242,16 @@ h1 span{color:var(--blue,var(--bookbsl-blue))}
 .bookbslFooterBottom{border-top:1px solid rgba(255,255,255,.2)!important;margin-top:30px!important;padding-top:18px!important;color:#B8CBCD!important;font-size:.82rem!important}
 
 @media(max-width:900px){
-  .topin{flex-wrap:wrap!important;padding:10px 0!important;gap:9px 14px!important}
-  .topnav{width:100%!important;justify-content:space-between!important;gap:10px!important;order:2!important}
   .bookbslFooterGrid{grid-template-columns:1fr 1fr!important;gap:28px!important}
   .bookbslFooterBrand{grid-column:1/-1!important}
 }
 @media(max-width:680px){
   .top .shell{width:min(100% - 22px,1160px)!important}
-  .topnav>a{font-size:.72rem!important}
-  .topnav .header-cta{display:inline-flex!important;min-height:36px!important;height:36px!important;padding:0 10px!important;font-size:.72rem!important}
   .desktopCtaText{display:none!important}
   .mobileCtaText{display:inline!important}
   .brandSub{display:none!important}
 }
 @media(max-width:500px){
-  .topnav{gap:6px!important}
-  .topnav>a{font-size:.68rem!important}
-  .topnav .header-cta{padding:0 8px!important;font-size:.68rem!important}
   .bookbslFooterGrid{grid-template-columns:1fr!important}
   .bookbslFooterBrand{grid-column:auto!important}
 }
@@ -302,7 +352,7 @@ h1 span{color:var(--blue,var(--bookbsl-blue))}
 
 </head>
 <body>
-<header class="top"><div class="shell topin"><a class="brand" href="./"><span class="brandmark">BSL</span><span>Book<b>BSL</b><small class="brandSub">Clear booking. Clear communication.</small></span></a><nav class="topnav" aria-label="Main navigation"><a href="./#guides">Guides</a><a href="awareness.html"><span class="desktopNavLabel">Access preparation</span><span class="mobileNavLabel">Access</span></a><a href="data.html">Data</a><a class="header-cta navCta" href="./#checker"><span class="desktopCtaText">Start checklist</span><span class="mobileCtaText">Checklist</span></a></nav></div></header>
+<header class="top"><div class="shell topin"><a class="brand" href="./"><span class="brandmark">BSL</span><span>Book<b>BSL</b><small class="brandSub">Clear booking. Clear communication.</small></span></a><nav class="topnav" aria-label="Main navigation"><a href="./#guides">Guides</a><a href="awareness.html">Access preparation</a><a href="data.html">Data</a><a class="header-cta navCta" href="./#checker"><span class="desktopCtaText">Start checklist</span><span class="mobileCtaText">Checklist</span></a></nav></div></header>
 <main><section class="hero"><div class="shell"><span class="kicker">Terms</span><h1>BookBSL <span>terms of use.</span></h1><p class="lead">These terms apply when you use the BookBSL website, checklist and information pages. Separate booking terms may apply if cSeeker accepts an interpreting or communication-support booking.</p><p class="updated">Last updated 11 September 2026.</p></div></section>
 <section class="content"><div class="shell">
 <div class="card"><h2>1. Who runs BookBSL?</h2><p>BookBSL is a service by <strong>CSEEKER LIMITED</strong>, company number 08924049, registered in England and Wales. Registered office: 7 Old Bank Top, Birmingham, England, B31 3XD.</p></div>
