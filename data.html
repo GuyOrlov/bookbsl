@@ -6,14 +6,21 @@
 <meta name="description" content="UK BSL and Deaf statistics from BookBSL, including Deaf population figures, NRCPD registration data, communication access research and live BookBSL usage.">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <meta name="theme-color" content="#092A35">
+<link rel="icon" type="image/png" href="https://bookbsl.co.uk/favicon.png">
+<link rel="apple-touch-icon" href="https://bookbsl.co.uk/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <meta property="og:title" content="UK BSL & Deaf Statistics | NRCPD & Access Data | BookBSL">
 <meta property="og:description" content="UK BSL population figures, registered communication professionals, access research and live BookBSL usage data.">
 <meta property="og:type" content="article">
+<meta property="og:image" content="https://bookbsl.co.uk/og-image.png">
+<meta property="og:image:width" content="600">
+<meta property="og:image:height" content="315">
 <meta property="og:locale" content="en_GB">
 <meta property="og:url" content="https://bookbsl.co.uk/data.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://bookbsl.co.uk/og-image.png">
 <link rel="canonical" href="https://bookbsl.co.uk/data.html">
 <title>UK BSL & Deaf Statistics | NRCPD & Access Data | BookBSL</title>
 <style>
@@ -334,5 +341,6 @@ async function get(type){try{const r=await fetch(`${COUNTER}/get/${keys[type]}`)
 (async()=>{for(const type of Object.keys(keys)){const n=await get(type);const el=document.getElementById(type);if(el)el.textContent=n===null?'—':n.toLocaleString('en-GB')}})();
 })();
 </script>
+<script src="page-analytics.js" defer></script>
 </body>
 </html>

@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://bookbsl.co.uk/</loc><lastmod>2026-09-12</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://bookbsl.co.uk/awareness.html</loc><lastmod>2026-09-12</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://bookbsl.co.uk/data.html</loc><lastmod>2026-09-12</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://bookbsl.co.uk/law.html</loc><lastmod>2026-09-12</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://bookbsl.co.uk/privacy.html</loc><lastmod>2026-09-12</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
-  <url><loc>https://bookbsl.co.uk/terms.html</loc><lastmod>2026-09-12</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
-  <url><loc>https://bookbsl.co.uk/cookies.html</loc><lastmod>2026-09-12</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
-  <url><loc>https://bookbsl.co.uk/awareness.html</loc><lastmod>2026-09-12</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://bookbsl.co.uk/bsl-interpreter-events.html</loc><lastmod>2026-09-12</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://bookbsl.co.uk/bsl-interpreter-work-meetings.html</loc><lastmod>2026-09-12</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://bookbsl.co.uk/online-bsl-interpreter.html</loc><lastmod>2026-09-12</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://bookbsl.co.uk/bsl-interpreter-cost.html</loc><lastmod>2026-09-12</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://bookbsl.co.uk/how-to-book-bsl-interpreter.html</loc><lastmod>2026-09-12</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://bookbsl.co.uk/bsl-interpreter-healthcare.html</loc><lastmod>2026-09-12</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://bookbsl.co.uk/bsl-interpreter-education.html</loc><lastmod>2026-09-12</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
 </urlset>
