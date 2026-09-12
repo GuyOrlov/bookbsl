@@ -66,6 +66,101 @@
     updateSettingsStatus();
   }
 
+  function installMobileNavStyles(){
+    if (document.getElementById('bookbslMobileNavStyle')) return;
+    const style = document.createElement('style');
+    style.id = 'bookbslMobileNavStyle';
+    style.textContent = `
+      .bookbslMenuToggle{display:none}
+      .bookbslMobilePanel{display:contents}
+      @media(max-width:680px){
+        .top{overflow:visible!important}
+        .topin{height:64px!important;min-height:64px!important;position:relative!important;display:flex!important;align-items:center!important;justify-content:space-between!important;gap:10px!important;flex-wrap:nowrap!important}
+        .brand{min-width:0!important;flex:0 1 auto!important;font-size:1.05rem!important;gap:8px!important}
+        .brandmark{width:38px!important;height:38px!important;flex:0 0 38px!important;font-size:.74rem!important}
+        .brandSub{display:none!important}
+        .topnav{margin-left:auto!important;display:flex!important;align-items:center!important;justify-content:flex-end!important;gap:0!important;flex:0 0 auto!important;position:static!important}
+        .bookbslMenuToggle{display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:8px!important;min-height:42px!important;padding:8px 13px!important;border:2px solid #092A35!important;border-radius:999px!important;background:#fff!important;color:#092A35!important;font:inherit!important;font-size:.84rem!important;font-weight:800!important;line-height:1!important;cursor:pointer!important}
+        .bookbslMenuToggle[aria-expanded="true"]{background:#FFD84D!important}
+        .bookbslMenuToggle:focus-visible{outline:3px solid #2456B3!important;outline-offset:3px!important}
+        .bookbslMenuIcon{width:17px;height:14px;display:grid;align-content:space-between;flex:0 0 17px}
+        .bookbslMenuIcon span{display:block;height:2px;border-radius:999px;background:currentColor}
+        .bookbslMobilePanel{display:none!important;position:absolute!important;z-index:80!important;top:calc(100% + 7px)!important;left:0!important;right:0!important;padding:10px!important;background:#fff!important;border:2px solid #092A35!important;border-radius:18px!important;box-shadow:6px 6px 0 #092A35!important}
+        .topnav.is-open .bookbslMobilePanel{display:grid!important;gap:4px!important}
+        .bookbslMobilePanel>a{display:flex!important;align-items:center!important;justify-content:flex-start!important;width:100%!important;min-height:46px!important;padding:10px 12px!important;border:0!important;border-radius:12px!important;background:transparent!important;color:#092A35!important;text-decoration:none!important;font-size:.94rem!important;font-weight:750!important;line-height:1.2!important;white-space:normal!important;box-shadow:none!important}
+        .bookbslMobilePanel>a:hover,.bookbslMobilePanel>a:focus-visible{background:#DDF4EC!important}
+        .bookbslMobilePanel>a[aria-current="page"],.bookbslMobilePanel>a.active{background:#EDF3FF!important;color:#2456B3!important}
+        .bookbslMobilePanel .btn,.bookbslMobilePanel .header-cta,.bookbslMobilePanel .navCta{display:flex!important;width:100%!important;min-width:0!important;height:auto!important;min-height:46px!important;padding:10px 12px!important;border:0!important;border-radius:12px!important;background:#092A35!important;color:#fff!important}
+      }
+    `;
+    document.head.appendChild(style);
+  }
+
+  function installMobileNavigation(){
+    const topin = document.querySelector('.topin');
+    const nav = topin && topin.querySelector('.topnav');
+    if (!topin || !nav || nav.querySelector('.bookbslMenuToggle')) return;
+
+    const children = Array.from(nav.children);
+    if (!children.length) return;
+
+    const panel = document.createElement('div');
+    panel.className = 'bookbslMobilePanel';
+    panel.id = 'bookbslMobileNav';
+    children.forEach(child => panel.appendChild(child));
+
+    const toggle = document.createElement('button');
+    toggle.type = 'button';
+    toggle.className = 'bookbslMenuToggle';
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-controls', panel.id);
+    toggle.setAttribute('aria-label', 'Open site menu');
+    toggle.innerHTML = '<span class="bookbslMenuIcon" aria-hidden="true"><span></span><span></span><span></span></span><span class="bookbslMenuText">Menu</span>';
+
+    nav.appendChild(toggle);
+    nav.appendChild(panel);
+
+    const closeMenu = () => {
+      nav.classList.remove('is-open');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', 'Open site menu');
+      const label = toggle.querySelector('.bookbslMenuText');
+      if (label) label.textContent = 'Menu';
+    };
+
+    const openMenu = () => {
+      nav.classList.add('is-open');
+      toggle.setAttribute('aria-expanded', 'true');
+      toggle.setAttribute('aria-label', 'Close site menu');
+      const label = toggle.querySelector('.bookbslMenuText');
+      if (label) label.textContent = 'Close';
+    };
+
+    toggle.addEventListener('click', () => {
+      if (toggle.getAttribute('aria-expanded') === 'true') closeMenu();
+      else openMenu();
+    });
+
+    panel.addEventListener('click', event => {
+      if (event.target.closest('a')) closeMenu();
+    });
+
+    document.addEventListener('click', event => {
+      if (!nav.contains(event.target)) closeMenu();
+    });
+
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+        closeMenu();
+        toggle.focus();
+      }
+    });
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 680) closeMenu();
+    }, { passive:true });
+  }
+
   function showBanner(){
     if (readChoice() || document.getElementById('bookbslAnalyticsBanner')) return;
     const wrap = document.createElement('div');
@@ -105,10 +200,13 @@
     status: readChoice
   };
 
+  installMobileNavStyles();
+
   if (readChoice() === 'granted') loadAnalytics();
   else stopAnalytics();
 
   const ready = () => {
+    installMobileNavigation();
     bindSettingsPage();
     if (!readChoice()) showBanner();
   };
