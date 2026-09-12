@@ -2,26 +2,7 @@ from pathlib import Path
 import re
 
 ROOT = Path(__file__).resolve().parents[2]
-PAGES = [
-    "index.html",
-    "awareness.html",
-    "data.html",
-    "law.html",
-    "terms.html",
-    "privacy.html",
-    "cookies.html",
-    "access-to-work-bsl-interpreter.html",
-    "bsl-interpreter-cost.html",
-    "bsl-interpreter-education.html",
-    "bsl-interpreter-events.html",
-    "bsl-interpreter-healthcare.html",
-    "bsl-interpreter-legal-official.html",
-    "bsl-interpreter-work-meetings.html",
-    "online-bsl-interpreter.html",
-    "how-to-book-bsl-interpreter.html",
-    "how-far-ahead-book-bsl-interpreter.html",
-    "one-or-two-bsl-interpreters.html",
-]
+
 GUIDE_PAGES = {
     "access-to-work-bsl-interpreter.html",
     "bsl-interpreter-cost.html",
@@ -37,14 +18,15 @@ GUIDE_PAGES = {
 }
 
 STYLE_ID = "bookbsl-global-nav-footer-20260912"
+NAV_SCRIPT = '<script src="nav-polish.js?v=20260912-3"></script>'
+
 STYLE = f'''<style id="{STYLE_ID}">
-/* One BookBSL header and footer across all public pages */
+/* One BookBSL header and footer across every page with a BookBSL header */
 .top .shell{{width:min(1160px,calc(100% - 32px))!important;margin:auto!important}}
-.topin{{min-height:68px!important;height:auto!important;display:flex!important;align-items:center!important;justify-content:space-between!important;gap:24px!important;padding:0!important}}
-.topnav{{display:flex!important;align-items:center!important;justify-content:flex-end!important;gap:12px!important;flex-wrap:nowrap!important}}
+.topin{{min-height:68px!important;height:auto!important;display:flex!important;align-items:center!important;justify-content:space-between!important;gap:32px!important;padding:0!important}}
+.topnav{{display:flex!important;align-items:center!important;justify-content:flex-end!important;gap:14px!important;flex-wrap:nowrap!important}}
 .mobileCtaText{{display:none}}
 
-/* Desktop/tablet navigation: the JS wraps links in .bookbslMobilePanel, so style both structures. */
 @media(min-width:681px){{
   .topnav>.bookbslMobilePanel{{display:contents!important}}
   .topnav>a:not(.header-cta),
@@ -61,7 +43,7 @@ STYLE = f'''<style id="{STYLE_ID}">
     color:var(--ink,#092A35)!important;
     white-space:nowrap!important;
     line-height:1!important;
-    transition:color .16s ease,background-color .16s ease,text-decoration-color .16s ease!important;
+    transition:color .16s ease,background-color .16s ease,transform .08s ease!important;
   }}
   .topnav>a:not(.header-cta):hover,
   .topnav>a:not(.header-cta):focus-visible,
@@ -75,6 +57,8 @@ STYLE = f'''<style id="{STYLE_ID}">
     text-decoration-thickness:2px!important;
     text-underline-offset:6px!important;
   }}
+  .topnav>a:not(.header-cta):active,
+  .topnav>.bookbslMobilePanel>a:not(.header-cta):active{{transform:translateY(1px)!important}}
   .topnav>a[aria-current="page"],
   .topnav>.bookbslMobilePanel>a[aria-current="page"]{{
     color:var(--blue,#2456B3)!important;
@@ -90,7 +74,7 @@ STYLE = f'''<style id="{STYLE_ID}">
     min-height:42px!important;
     height:42px!important;
     padding:0 20px!important;
-    margin-left:8px!important;
+    margin-left:10px!important;
     border:2px solid var(--ink,#092A35)!important;
     border-radius:999px!important;
     background:var(--ink,#092A35)!important;
@@ -101,8 +85,9 @@ STYLE = f'''<style id="{STYLE_ID}">
     transition:background-color .16s ease,border-color .16s ease,transform .08s ease!important;
   }}
   .topnav .header-cta:hover,
-  .topnav .header-cta:focus-visible{{background:var(--blue,#2456B3)!important;border-color:var(--blue,#2456B3)!important;color:#fff!important;text-decoration:none!important}}
-  .topnav .header-cta:active{{background:var(--blue,#2456B3)!important;border-color:var(--blue,#2456B3)!important;transform:translateY(1px)!important}}
+  .topnav .header-cta:focus-visible,
+  .topnav .header-cta:active{{background:var(--blue,#2456B3)!important;border-color:var(--blue,#2456B3)!important;color:#fff!important;text-decoration:none!important}}
+  .topnav .header-cta:active{{transform:translateY(1px)!important}}
 }}
 
 .bookbslFooter{{background:#092A35!important;color:#fff!important;padding:46px 0!important;margin:0!important;font-size:.92rem!important}}
@@ -182,10 +167,27 @@ def replace_style(text: str) -> str:
     return text.replace("</head>", STYLE + "\n</head>", 1)
 
 
-for name in PAGES:
-    path = ROOT / name
-    if not path.exists():
-        raise RuntimeError(f"Missing public page: {name}")
+def ensure_nav_script(text: str) -> str:
+    text = re.sub(r'\s*<script src="nav-polish\.js(?:\?[^\"]*)?"></script>', '', text)
+    ga4 = re.compile(r'(<script src="ga4-consent\.js(?:\?[^\"]*)?"></script>)')
+    if ga4.search(text):
+        return ga4.sub(r'\1\n' + NAV_SCRIPT, text, count=1)
+    if "</body>" in text:
+        return text.replace("</body>", NAV_SCRIPT + "\n</body>", 1)
+    raise RuntimeError("Missing </body>")
+
+
+pages = []
+for path in sorted(ROOT.glob("*.html")):
+    text = path.read_text(encoding="utf-8")
+    if '<header class="top">' in text:
+        pages.append(path)
+
+if not pages:
+    raise RuntimeError("No BookBSL HTML pages with a top header were found")
+
+for path in pages:
+    name = path.name
     text = path.read_text(encoding="utf-8")
 
     header_pattern = re.compile(r'<header class="top">.*?</header>', re.S)
@@ -195,12 +197,14 @@ for name in PAGES:
     text = header_pattern.sub(header_for(name), text, count=1)
 
     footer_pattern = re.compile(r'<footer(?:\s[^>]*)?>.*?</footer>', re.S)
-    matches = footer_pattern.findall(text)
-    if len(matches) != 1:
-        raise RuntimeError(f"Expected exactly one footer in {name}, found {len(matches)}")
-    text = footer_pattern.sub(FOOTER, text, count=1)
+    footers = footer_pattern.findall(text)
+    if len(footers) > 1:
+        raise RuntimeError(f"Expected at most one footer in {name}, found {len(footers)}")
+    if len(footers) == 1:
+        text = footer_pattern.sub(FOOTER, text, count=1)
 
     text = replace_style(text)
+    text = ensure_nav_script(text)
     path.write_text(text, encoding="utf-8")
 
-print(f"Updated navigation and footer on {len(PAGES)} public BookBSL pages")
+print(f"Updated shared BookBSL navigation on {len(pages)} HTML pages")
