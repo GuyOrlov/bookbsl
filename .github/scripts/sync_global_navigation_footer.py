@@ -18,7 +18,7 @@ GUIDE_PAGES = {
 }
 
 STYLE_ID = "bookbsl-global-nav-footer-20260912"
-NAV_SCRIPT = '<script src="nav-polish.js?v=20260912-3"></script>'
+NAV_SCRIPT = '<script src="nav-polish.js?v=20260912-4"></script>'
 
 STYLE = f'''<style id="{STYLE_ID}">
 /* One BookBSL header and footer across every page with a BookBSL header */
@@ -71,6 +71,9 @@ STYLE = f'''<style id="{STYLE_ID}">
     align-items:center!important;
     justify-content:center!important;
     box-sizing:border-box!important;
+    width:auto!important;
+    min-width:0!important;
+    max-width:none!important;
     min-height:42px!important;
     height:42px!important;
     padding:0 20px!important;
@@ -81,7 +84,12 @@ STYLE = f'''<style id="{STYLE_ID}">
     color:#fff!important;
     text-decoration:none!important;
     box-shadow:none!important;
+    font-size:.92rem!important;
+    font-weight:800!important;
+    line-height:1!important;
+    letter-spacing:-.01em!important;
     white-space:nowrap!important;
+    flex:0 0 auto!important;
     transition:background-color .16s ease,border-color .16s ease,transform .08s ease!important;
   }}
   .topnav .header-cta:hover,
