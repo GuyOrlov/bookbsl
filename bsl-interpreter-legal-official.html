@@ -118,8 +118,100 @@ h1 span{color:var(--blue,var(--bookbsl-blue))}
   .bookbslFooterBrand{grid-column:auto!important}
 }
 </style>
+
+<style id="bookbsl-equal-nav-tabs-20260912">
+/* Equal-size BookBSL top navigation tabs on every public page */
+.topnav{
+  display:grid!important;
+  grid-template-columns:repeat(4,152px)!important;
+  gap:10px!important;
+  align-items:center!important;
+  justify-content:end!important;
+  flex-wrap:nowrap!important;
+}
+.topnav>a{
+  box-sizing:border-box!important;
+  width:152px!important;
+  min-width:152px!important;
+  height:42px!important;
+  min-height:42px!important;
+  padding:0 12px!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  border:2px solid transparent!important;
+  border-radius:999px!important;
+  background:transparent!important;
+  color:var(--ink,#092A35)!important;
+  text-decoration:none!important;
+  text-align:center!important;
+  font-size:.86rem!important;
+  font-weight:800!important;
+  line-height:1!important;
+  white-space:nowrap!important;
+  box-shadow:none!important;
+  transition:background-color .16s ease,border-color .16s ease,color .16s ease,transform .08s ease!important;
+}
+.topnav>a.header-cta,
+.topnav>a.navCta{
+  background:var(--ink,#092A35)!important;
+  color:#fff!important;
+  border-color:var(--ink,#092A35)!important;
+}
+.topnav>a:hover,
+.topnav>a:focus-visible,
+.topnav>a[aria-current="page"]{
+  background:var(--blue,#2456B3)!important;
+  border-color:var(--blue,#2456B3)!important;
+  color:#fff!important;
+  text-decoration:none!important;
+}
+.topnav>a:focus-visible{
+  outline:3px solid #FFD84D!important;
+  outline-offset:3px!important;
+}
+.topnav>a:active{
+  background:var(--blue,#2456B3)!important;
+  border-color:var(--blue,#2456B3)!important;
+  color:#fff!important;
+  transform:translateY(1px)!important;
+}
+.mobileNavLabel{display:none!important}
+
+@media(max-width:980px){
+  .topnav{
+    width:100%!important;
+    grid-template-columns:repeat(4,minmax(0,1fr))!important;
+    gap:8px!important;
+    justify-content:stretch!important;
+  }
+  .topnav>a{
+    width:100%!important;
+    min-width:0!important;
+    padding:0 8px!important;
+  }
+}
+
+@media(max-width:680px){
+  .topnav{gap:6px!important}
+  .topnav>a{
+    height:38px!important;
+    min-height:38px!important;
+    padding:0 6px!important;
+    font-size:.70rem!important;
+  }
+  .desktopNavLabel{display:none!important}
+  .mobileNavLabel{display:inline!important}
+}
+
+@media(max-width:390px){
+  .topnav{gap:4px!important}
+  .topnav>a{font-size:.66rem!important;padding:0 4px!important}
+}
+</style>
+
 </head>
-<body><header class="top"><div class="shell topin"><a class="brand" href="./"><span class="brandmark">BSL</span><span>Book<b>BSL</b><small class="brandSub">Clear booking. Clear communication.</small></span></a><nav class="topnav" aria-label="Main navigation"><a href="./#guides" aria-current="page">Guides</a><a href="awareness.html">Access preparation</a><a href="data.html">Data</a><a class="header-cta navCta" href="./#checker"><span class="desktopCtaText">Start checklist</span><span class="mobileCtaText">Checklist</span></a></nav></div></header>
+<body><header class="top"><div class="shell topin"><a class="brand" href="./"><span class="brandmark">BSL</span><span>Book<b>BSL</b><small class="brandSub">Clear booking. Clear communication.</small></span></a><nav class="topnav" aria-label="Main navigation"><a href="./#guides" aria-current="page">Guides</a><a href="awareness.html"><span class="desktopNavLabel">Access preparation</span><span class="mobileNavLabel">Access</span></a><a href="data.html">Data</a><a class="header-cta navCta" href="./#checker"><span class="desktopCtaText">Start checklist</span><span class="mobileCtaText">Checklist</span></a></nav></div></header>
 <main><section class="hero"><div class="shell"><span class="kicker">Legal, public-sector & official settings</span><h1>British Sign Language interpreters for <span>legal and official appointments</span></h1><p class="lead">Legal and official settings can have specific professional, procedural, security or independence requirements. Prepare the booking carefully and confirm the organisation’s requirements before choosing a communication professional.</p></div></section>
 <section class="content"><div class="shell"><section class="card"><h2>Confirm the Deaf person’s communication preference</h2><p>Ask what communication support is required rather than assuming British Sign Language interpreting is automatically the right adjustment. Some people may need Deaf Relay, speech-to-text, deafblind communication support or another arrangement.</p></section><section class="card"><h2>Describe the exact setting</h2><p>Say whether the booking is for a court, tribunal, police matter, solicitor meeting, immigration appointment, local authority meeting, disciplinary process or another official setting. Different environments can have different requirements.</p></section><section class="card"><h2>Check qualification or registration requirements</h2><p>Ask the responsible organisation whether a particular registration, qualification, security clearance or specialist experience is required. Do not assume that every interpreter is suitable for every legal or official assignment.</p></section><section class="card"><h2>Protect independence and confidentiality</h2><p>Use appropriate professional arrangements and only share information needed to prepare for the assignment. Avoid using family members, friends or unqualified helpers where an independent professional is required.</p></section><section class="card"><h2>Give accurate timing and access information</h2><p>Include arrival time, expected finish time, waiting time, security procedures, room details, breaks, remote-platform information and a named contact who can resolve access problems on the day.</p></section><section class="card"><h2>Send documents safely and early</h2><p>Where appropriate and permitted, provide relevant names, terminology, case or meeting context and documents through the organisation’s approved information-sharing process. Sensitive information should follow the organisation’s normal security and privacy rules.</p></section>
 <section class="card"><h2>Use this guide with BookBSL</h2><p><strong>Important:</strong> this page is general booking guidance, not legal advice. The court, tribunal, police force, solicitor, public body or other responsible organisation should confirm any specific professional or procedural requirements.</p></section>
@@ -137,7 +229,7 @@ h1 span{color:var(--blue,var(--bookbsl-blue))}
       <strong>Explore</strong>
       <a href="./">Home</a>
       <a href="./#guides">Guides</a>
-      <a href="awareness.html">Access preparation</a>
+      <a href="awareness.html"><span class="desktopNavLabel">Access preparation</span><span class="mobileNavLabel">Access</span></a>
       <a href="data.html">Data</a>
       <a href="law.html">Laws</a>
     </nav>

@@ -513,10 +513,102 @@ h1 span{color:var(--blue,var(--bookbsl-blue))}
   .bookbslFooterBrand{grid-column:auto!important}
 }
 </style>
+
+<style id="bookbsl-equal-nav-tabs-20260912">
+/* Equal-size BookBSL top navigation tabs on every public page */
+.topnav{
+  display:grid!important;
+  grid-template-columns:repeat(4,152px)!important;
+  gap:10px!important;
+  align-items:center!important;
+  justify-content:end!important;
+  flex-wrap:nowrap!important;
+}
+.topnav>a{
+  box-sizing:border-box!important;
+  width:152px!important;
+  min-width:152px!important;
+  height:42px!important;
+  min-height:42px!important;
+  padding:0 12px!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  border:2px solid transparent!important;
+  border-radius:999px!important;
+  background:transparent!important;
+  color:var(--ink,#092A35)!important;
+  text-decoration:none!important;
+  text-align:center!important;
+  font-size:.86rem!important;
+  font-weight:800!important;
+  line-height:1!important;
+  white-space:nowrap!important;
+  box-shadow:none!important;
+  transition:background-color .16s ease,border-color .16s ease,color .16s ease,transform .08s ease!important;
+}
+.topnav>a.header-cta,
+.topnav>a.navCta{
+  background:var(--ink,#092A35)!important;
+  color:#fff!important;
+  border-color:var(--ink,#092A35)!important;
+}
+.topnav>a:hover,
+.topnav>a:focus-visible,
+.topnav>a[aria-current="page"]{
+  background:var(--blue,#2456B3)!important;
+  border-color:var(--blue,#2456B3)!important;
+  color:#fff!important;
+  text-decoration:none!important;
+}
+.topnav>a:focus-visible{
+  outline:3px solid #FFD84D!important;
+  outline-offset:3px!important;
+}
+.topnav>a:active{
+  background:var(--blue,#2456B3)!important;
+  border-color:var(--blue,#2456B3)!important;
+  color:#fff!important;
+  transform:translateY(1px)!important;
+}
+.mobileNavLabel{display:none!important}
+
+@media(max-width:980px){
+  .topnav{
+    width:100%!important;
+    grid-template-columns:repeat(4,minmax(0,1fr))!important;
+    gap:8px!important;
+    justify-content:stretch!important;
+  }
+  .topnav>a{
+    width:100%!important;
+    min-width:0!important;
+    padding:0 8px!important;
+  }
+}
+
+@media(max-width:680px){
+  .topnav{gap:6px!important}
+  .topnav>a{
+    height:38px!important;
+    min-height:38px!important;
+    padding:0 6px!important;
+    font-size:.70rem!important;
+  }
+  .desktopNavLabel{display:none!important}
+  .mobileNavLabel{display:inline!important}
+}
+
+@media(max-width:390px){
+  .topnav{gap:4px!important}
+  .topnav>a{font-size:.66rem!important;padding:0 4px!important}
+}
+</style>
+
 </head>
 <body>
 <a class="skip" href="#main">Skip to main content</a>
-<header class="top"><div class="shell topin"><a class="brand" href="./"><span class="brandmark">BSL</span><span>Book<b>BSL</b><small class="brandSub">Clear booking. Clear communication.</small></span></a><nav class="topnav" aria-label="Main navigation"><a href="./#guides">Guides</a><a href="awareness.html">Access preparation</a><a href="data.html">Data</a><a class="header-cta navCta" href="./#checker"><span class="desktopCtaText">Start checklist</span><span class="mobileCtaText">Checklist</span></a></nav></div></header>
+<header class="top"><div class="shell topin"><a class="brand" href="./"><span class="brandmark">BSL</span><span>Book<b>BSL</b><small class="brandSub">Clear booking. Clear communication.</small></span></a><nav class="topnav" aria-label="Main navigation"><a href="./#guides">Guides</a><a href="awareness.html"><span class="desktopNavLabel">Access preparation</span><span class="mobileNavLabel">Access</span></a><a href="data.html">Data</a><a class="header-cta navCta" href="./#checker"><span class="desktopCtaText">Start checklist</span><span class="mobileCtaText">Checklist</span></a></nav></div></header>
 <main id="main">
 <!-- homepage-order: conversion-first -->
 <section class="hero"><div class="shell heroGrid"><div><span class="kicker">Free 2-minute booking check</span><h1>Book a British Sign Language interpreter in the UK <span>with confidence.</span></h1><p class="heroSupport">Need a British Sign Language interpreter? Prepare an in-person, online, workplace, event or appointment booking in about 2 minutes.</p><p class="lead">First time booking a British Sign Language (BSL) interpreter? Answer 9 simple questions. BookBSL checks your information, highlights anything missing and prepares a clear enquiry for a quote.</p><div class="actions"><a class="btn primary" href="#checker" data-track="checklist_start_click">Start the free checklist →</a><a class="btn" href="mailto:bookings@cseeker.co.uk?subject=BookBSL%20direct%20booking%20enquiry&body=Hello%20cSeeker%2C%0A%0AI%20know%20what%20communication%20support%20I%20need%20and%20would%20like%20to%20check%20availability%20and%20request%20a%20quote.%0A%0ABOOKING%20DETAILS%0ASupport%20needed%3A%0ADate%3A%0AStart%20time%3A%0AFinish%20time%3A%0AVenue%20/%20online%20platform%3A%0ANumber%20of%20Deaf%20people%20needing%20support%3A%0ACommunication%20preference%20confirmed%3A%20Yes%20/%20No%20/%20Not%20sure%0ARecording%2C%20photography%20or%20livestream%3A%20Yes%20/%20No%20/%20Not%20sure%0APreparation%20information%20available%3A%20Yes%20/%20Some%20/%20Not%20yet%0AOther%20useful%20information%3A%0A%0APlease%20advise%20on%20availability%2C%20the%20recommended%20number%20of%20professionals%20and%20the%20quote.%0A%0AThank%20you" data-track="direct_enquiry">Already know what you need? Request availability &amp; a quote</a></div><p class="micro">No account · No payment · Your answers stay in your browser until you choose to email or copy them.</p></div><aside class="heroCard heroStart" aria-labelledby="heroStartTitle"><div class="eyebrow">Start your booking check</div><h2 id="heroStartTitle">What is the booking for?</h2><p>Choose one to start. We’ll take you straight to the next question.</p><div class="heroChoices" role="group" aria-label="Choose booking type"><button type="button" class="heroChoice" data-booking-type="Event or conference">Event or conference</button><button type="button" class="heroChoice" data-booking-type="Workplace meeting">Workplace meeting</button><button type="button" class="heroChoice" data-booking-type="Appointment">Appointment</button><button type="button" class="heroChoice" data-booking-type="Training or education">Training or education</button><button type="button" class="heroChoice" data-booking-type="Legal or official">Legal or official</button><button type="button" class="heroChoice" data-booking-type="Other">Other</button></div><p class="heroStartNote">About 2 minutes · 9 simple questions · no account needed</p></aside></div></section>
@@ -608,7 +700,7 @@ h1 span{color:var(--blue,var(--bookbsl-blue))}
       <strong>Explore</strong>
       <a href="./">Home</a>
       <a href="./#guides">Guides</a>
-      <a href="awareness.html">Access preparation</a>
+      <a href="awareness.html"><span class="desktopNavLabel">Access preparation</span><span class="mobileNavLabel">Access</span></a>
       <a href="data.html">Data</a>
       <a href="law.html">Laws</a>
     </nav>

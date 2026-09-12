@@ -33,8 +33,100 @@ h1 span{color:var(--blue,var(--bookbsl-blue))}
   .brandSub{display:none!important}
 }
 </style>
+
+<style id="bookbsl-equal-nav-tabs-20260912">
+/* Equal-size BookBSL top navigation tabs on every public page */
+.topnav{
+  display:grid!important;
+  grid-template-columns:repeat(4,152px)!important;
+  gap:10px!important;
+  align-items:center!important;
+  justify-content:end!important;
+  flex-wrap:nowrap!important;
+}
+.topnav>a{
+  box-sizing:border-box!important;
+  width:152px!important;
+  min-width:152px!important;
+  height:42px!important;
+  min-height:42px!important;
+  padding:0 12px!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  border:2px solid transparent!important;
+  border-radius:999px!important;
+  background:transparent!important;
+  color:var(--ink,#092A35)!important;
+  text-decoration:none!important;
+  text-align:center!important;
+  font-size:.86rem!important;
+  font-weight:800!important;
+  line-height:1!important;
+  white-space:nowrap!important;
+  box-shadow:none!important;
+  transition:background-color .16s ease,border-color .16s ease,color .16s ease,transform .08s ease!important;
+}
+.topnav>a.header-cta,
+.topnav>a.navCta{
+  background:var(--ink,#092A35)!important;
+  color:#fff!important;
+  border-color:var(--ink,#092A35)!important;
+}
+.topnav>a:hover,
+.topnav>a:focus-visible,
+.topnav>a[aria-current="page"]{
+  background:var(--blue,#2456B3)!important;
+  border-color:var(--blue,#2456B3)!important;
+  color:#fff!important;
+  text-decoration:none!important;
+}
+.topnav>a:focus-visible{
+  outline:3px solid #FFD84D!important;
+  outline-offset:3px!important;
+}
+.topnav>a:active{
+  background:var(--blue,#2456B3)!important;
+  border-color:var(--blue,#2456B3)!important;
+  color:#fff!important;
+  transform:translateY(1px)!important;
+}
+.mobileNavLabel{display:none!important}
+
+@media(max-width:980px){
+  .topnav{
+    width:100%!important;
+    grid-template-columns:repeat(4,minmax(0,1fr))!important;
+    gap:8px!important;
+    justify-content:stretch!important;
+  }
+  .topnav>a{
+    width:100%!important;
+    min-width:0!important;
+    padding:0 8px!important;
+  }
+}
+
+@media(max-width:680px){
+  .topnav{gap:6px!important}
+  .topnav>a{
+    height:38px!important;
+    min-height:38px!important;
+    padding:0 6px!important;
+    font-size:.70rem!important;
+  }
+  .desktopNavLabel{display:none!important}
+  .mobileNavLabel{display:inline!important}
+}
+
+@media(max-width:390px){
+  .topnav{gap:4px!important}
+  .topnav>a{font-size:.66rem!important;padding:0 4px!important}
+}
+</style>
+
 </head>
-<body><header class="top"><div class="shell topin"><a class="brand" href="./"><span class="brandmark">BSL</span><span>Book<b>BSL</b><small class="brandSub">Clear booking. Clear communication.</small></span></a><nav class="topnav" aria-label="Main navigation"><a href="./#guides">Guides</a><a href="awareness.html">Access preparation</a><a href="data.html">Data</a><a class="header-cta navCta" href="./#checker">Start checklist</a></nav></div></header><main class="shell" style="padding:40px 0"><h1 style="font-size:2.4rem">BookBSL <span>site statistics</span></h1><p>Session-based page popularity counters plus the main booking funnel counters. Search Console remains the source for Google impressions and clicks.</p>
+<body><header class="top"><div class="shell topin"><a class="brand" href="./"><span class="brandmark">BSL</span><span>Book<b>BSL</b><small class="brandSub">Clear booking. Clear communication.</small></span></a><nav class="topnav" aria-label="Main navigation"><a href="./#guides">Guides</a><a href="awareness.html"><span class="desktopNavLabel">Access preparation</span><span class="mobileNavLabel">Access</span></a><a href="data.html">Data</a><a class="header-cta navCta" href="./#checker">Start checklist</a></nav></div></header><main class="shell" style="padding:40px 0"><h1 style="font-size:2.4rem">BookBSL <span>site statistics</span></h1><p>Session-based page popularity counters plus the main booking funnel counters. Search Console remains the source for Google impressions and clicks.</p>
 <h2>Pages</h2><table><thead><tr><th>Page</th><th>Sessions counted</th></tr></thead><tbody><tr><td>Home</td><td id="p-home">—</td></tr><tr><td>Booking a BSL interpreter for events</td><td id="p-bsl-interpreter-events-html">—</td></tr><tr><td>Booking a BSL interpreter for work and meetings</td><td id="p-bsl-interpreter-work-meetings-html">—</td></tr><tr><td>Booking an online BSL interpreter</td><td id="p-online-bsl-interpreter-html">—</td></tr><tr><td>How much does a BSL interpreter cost?</td><td id="p-bsl-interpreter-cost-html">—</td></tr><tr><td>How to book a BSL interpreter in the UK</td><td id="p-how-to-book-bsl-interpreter-html">—</td></tr><tr><td>Arranging BSL interpreting for healthcare</td><td id="p-bsl-interpreter-healthcare-html">—</td></tr><tr><td>Booking BSL interpreting for education and training</td><td id="p-bsl-interpreter-education-html">—</td></tr><tr><td>Deaf awareness</td><td id="p-awareness-html">—</td></tr><tr><td>Data & evidence</td><td id="p-data-html">—</td></tr><tr><td>BSL laws</td><td id="p-law-html">—</td></tr></tbody></table>
 <h2 style="margin-top:35px">Booking funnel</h2><table><tbody><tr><td>Homepage visits</td><td id="f-visits">—</td></tr><tr><td>Checklist starts</td><td id="f-starts">—</td></tr><tr><td>Checklist finishes</td><td id="f-finishes">—</td></tr><tr><td>Quote clicks</td><td id="f-quotes">—</td></tr></tbody></table></main>
 <script>
