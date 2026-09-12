@@ -5,6 +5,7 @@ on:
     paths:
       - '.github/workflows/bookbsl-seo-complete.yml'
       - '.github/scripts/bookbsl_seo_complete.py'
+      - '.github/scripts/add_guides_nav.py'
   workflow_dispatch:
 
 permissions:
@@ -28,6 +29,8 @@ jobs:
               text = text.replace('<a href="./#support">Support</a>', '<a href="#guides">Guides</a><a href="./#support">Support</a>', 1)
           p.write_text(text, encoding='utf-8')
           PY
+      - name: Add Guides to every page menu
+        run: python .github/scripts/add_guides_nav.py
       - name: Verify files
         run: |
           test -f og-image.png
@@ -46,6 +49,16 @@ jobs:
           grep -q 'summary_large_image' index.html
           grep -q 'id="guides"' index.html
           grep -q 'href="#guides"' index.html
+          grep -q 'href="./#guides"' awareness.html
+          grep -q 'href="./#guides"' data.html
+          grep -q 'href="./#guides"' law.html
+          grep -q 'href="./#guides"' bsl-interpreter-events.html
+          grep -q 'href="./#guides"' bsl-interpreter-work-meetings.html
+          grep -q 'href="./#guides"' online-bsl-interpreter.html
+          grep -q 'href="./#guides"' bsl-interpreter-cost.html
+          grep -q 'href="./#guides"' how-to-book-bsl-interpreter.html
+          grep -q 'href="./#guides"' bsl-interpreter-healthcare.html
+          grep -q 'href="./#guides"' bsl-interpreter-education.html
           grep -q 'noindex,follow' privacy.html
           grep -q 'bsl-interpreter-events.html' sitemap.xml
       - name: Commit SEO update
@@ -56,6 +69,6 @@ jobs:
           if git diff --cached --quiet; then
             echo 'No changes needed'
           else
-            git commit -m 'Complete BookBSL SEO setup and add booking guides'
+            git commit -m 'Show Guides in every BookBSL page menu'
             git push
           fi
