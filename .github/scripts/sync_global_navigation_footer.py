@@ -18,10 +18,11 @@ GUIDE_PAGES = {
 }
 
 STYLE_ID = "bookbsl-global-nav-footer-20260912"
-HEADER_STYLESHEET = '<link rel="stylesheet" href="bookbsl-header.css?v=20260912-1">'
+HEADER_STYLESHEET = '<link rel="stylesheet" href="bookbsl-header.css?v=20260912-2">'
+HEADER_SCRIPT = '<script src="bookbsl-header.js?v=20260912-1" defer></script>'
 
 STYLE = f'''<style id="{STYLE_ID}">
-/* Shared BookBSL footer. Header/navigation is controlled by bookbsl-header.css. */
+/* Shared BookBSL footer. Header/navigation is controlled only by bookbsl-header.css. */
 .bookbslFooter{{background:#092A35!important;color:#fff!important;padding:46px 0!important;margin:0!important;font-size:.92rem!important}}
 .bookbslFooter .shell{{width:min(1160px,calc(100% - 32px))!important;margin:auto!important}}
 .bookbslFooterGrid{{display:grid!important;grid-template-columns:minmax(280px,1.35fr) repeat(3,minmax(135px,.55fr))!important;gap:34px!important;align-items:start!important}}
@@ -92,14 +93,15 @@ def replace_footer_style(text: str) -> str:
     return text.replace("</head>", STYLE + "\n</head>", 1)
 
 
-def ensure_header_stylesheet_last(text: str) -> str:
-    # Remove the old JS desktop-polish layer completely; it caused page-to-page cascade differences.
+def ensure_header_assets_last(text: str) -> str:
+    # Remove old menu-polish scripts and any older canonical header assets.
     text = re.sub(r'\s*<script src="nav-polish\.js(?:\?[^\"]*)?"></script>', '', text)
-    # Remove any older version of the canonical header stylesheet, then add one copy last in <head>.
+    text = re.sub(r'\s*<script src="bookbsl-header\.js(?:\?[^\"]*)?"(?:\s+defer)?></script>', '', text)
     text = re.sub(r'\s*<link rel="stylesheet" href="bookbsl-header\.css(?:\?[^\"]*)?">', '', text)
     if "</head>" not in text:
         raise RuntimeError("Missing </head>")
-    return text.replace("</head>", HEADER_STYLESHEET + "\n</head>", 1)
+    assets = HEADER_STYLESHEET + "\n" + HEADER_SCRIPT
+    return text.replace("</head>", assets + "\n</head>", 1)
 
 
 pages = []
@@ -129,7 +131,7 @@ for path in pages:
         text = footer_pattern.sub(FOOTER, text, count=1)
 
     text = replace_footer_style(text)
-    text = ensure_header_stylesheet_last(text)
+    text = ensure_header_assets_last(text)
     path.write_text(text, encoding="utf-8")
 
 print(f"Applied one canonical BookBSL header/navigation to {len(pages)} HTML pages")
