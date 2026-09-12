@@ -6,6 +6,7 @@ on:
       - '.github/workflows/bookbsl-seo-complete.yml'
       - '.github/scripts/bookbsl_seo_complete.py'
       - '.github/scripts/add_guides_nav.py'
+      - '.github/scripts/add_ga4.py'
   workflow_dispatch:
 
 permissions:
@@ -31,12 +32,15 @@ jobs:
           PY
       - name: Add Guides to every page menu
         run: python .github/scripts/add_guides_nav.py
+      - name: Add Google Analytics with consent controls
+        run: python .github/scripts/add_ga4.py
       - name: Verify files
         run: |
           test -f og-image.png
           test -f favicon.png
           test -f apple-touch-icon.png
           test -f page-analytics.js
+          test -f ga4-consent.js
           test -f stats.html
           test -f bsl-interpreter-events.html
           test -f bsl-interpreter-work-meetings.html
@@ -59,9 +63,14 @@ jobs:
           grep -q 'href="./#guides"' how-to-book-bsl-interpreter.html
           grep -q 'href="./#guides"' bsl-interpreter-healthcare.html
           grep -q 'href="./#guides"' bsl-interpreter-education.html
+          grep -q 'src="ga4-consent.js"' index.html
+          grep -q 'src="ga4-consent.js"' awareness.html
+          grep -q 'G-GKTLWHQNQS' ga4-consent.js
+          grep -q 'id="googleAnalytics"' cookies.html
+          grep -q '<h2>Google Analytics</h2>' privacy.html
           grep -q 'noindex,follow' privacy.html
           grep -q 'bsl-interpreter-events.html' sitemap.xml
-      - name: Commit SEO update
+      - name: Commit SEO and analytics update
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
@@ -69,6 +78,6 @@ jobs:
           if git diff --cached --quiet; then
             echo 'No changes needed'
           else
-            git commit -m 'Show Guides in every BookBSL page menu'
+            git commit -m 'Install GA4 with analytics consent controls'
             git push
           fi
