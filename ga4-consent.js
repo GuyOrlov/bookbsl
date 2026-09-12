@@ -75,14 +75,70 @@
       .bookbslMobilePanel{display:contents}
       @media(max-width:680px){
         .top{overflow:visible!important}
-        .topin{height:64px!important;min-height:64px!important;position:relative!important;display:flex!important;align-items:center!important;justify-content:space-between!important;gap:10px!important;flex-wrap:nowrap!important}
-        .brand{min-width:0!important;flex:0 1 auto!important;font-size:1.05rem!important;gap:8px!important}
-        .brandmark{width:38px!important;height:38px!important;flex:0 0 38px!important;font-size:.74rem!important}
-        .brandSub{display:none!important}
-        .topnav{margin-left:auto!important;display:flex!important;align-items:center!important;justify-content:flex-end!important;gap:0!important;flex:0 0 auto!important;position:static!important}
-        .bookbslMenuToggle{display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:8px!important;min-height:42px!important;padding:8px 13px!important;border:2px solid #092A35!important;border-radius:999px!important;background:#fff!important;color:#092A35!important;font:inherit!important;font-size:.84rem!important;font-weight:800!important;line-height:1!important;cursor:pointer!important}
-        .bookbslMenuToggle[aria-expanded="true"]{background:#FFD84D!important}
-        .bookbslMenuToggle:focus-visible{outline:3px solid #2456B3!important;outline-offset:3px!important}
+        .top .topin{
+          height:70px!important;
+          min-height:70px!important;
+          position:relative!important;
+          display:grid!important;
+          grid-template-columns:minmax(0,1fr) auto!important;
+          align-items:center!important;
+          column-gap:12px!important;
+          row-gap:0!important;
+          flex-wrap:nowrap!important;
+        }
+        .top .brand{
+          grid-column:1!important;
+          min-width:0!important;
+          width:auto!important;
+          margin:0!important;
+          display:flex!important;
+          align-items:center!important;
+          flex:0 1 auto!important;
+          font-size:1.05rem!important;
+          gap:8px!important;
+          white-space:nowrap!important;
+        }
+        .top .brandmark{width:38px!important;height:38px!important;flex:0 0 38px!important;font-size:.74rem!important}
+        .top .brandSub{display:none!important}
+        .top .topnav{
+          grid-column:2!important;
+          justify-self:end!important;
+          align-self:center!important;
+          width:auto!important;
+          max-width:max-content!important;
+          min-width:0!important;
+          margin:0!important;
+          padding:0!important;
+          display:flex!important;
+          align-items:center!important;
+          justify-content:flex-end!important;
+          gap:0!important;
+          flex:0 0 auto!important;
+          position:static!important;
+        }
+        .top .bookbslMenuToggle{
+          display:inline-flex!important;
+          width:auto!important;
+          max-width:max-content!important;
+          margin:0!important;
+          align-items:center!important;
+          justify-content:center!important;
+          gap:8px!important;
+          min-height:42px!important;
+          padding:8px 14px!important;
+          border:2px solid #092A35!important;
+          border-radius:999px!important;
+          background:#fff!important;
+          color:#092A35!important;
+          font:inherit!important;
+          font-size:.84rem!important;
+          font-weight:800!important;
+          line-height:1!important;
+          white-space:nowrap!important;
+          cursor:pointer!important;
+        }
+        .top .bookbslMenuToggle[aria-expanded="true"]{background:#FFD84D!important}
+        .top .bookbslMenuToggle:focus-visible{outline:3px solid #2456B3!important;outline-offset:3px!important}
         .bookbslMenuIcon{width:17px;height:14px;display:grid;align-content:space-between;flex:0 0 17px}
         .bookbslMenuIcon span{display:block;height:2px;border-radius:999px;background:currentColor}
         .bookbslMobilePanel{display:none!important;position:absolute!important;z-index:80!important;top:calc(100% + 7px)!important;left:0!important;right:0!important;padding:10px!important;background:#fff!important;border:2px solid #092A35!important;border-radius:18px!important;box-shadow:6px 6px 0 #092A35!important}
