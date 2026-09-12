@@ -1,5 +1,8 @@
 /* Canonical BookBSL header and navigation styles.
-   Loaded last on every public page so page-specific legacy CSS cannot change the menu. */
+   This is the only stylesheet that should control header/menu geometry. */
+
+.bookbslMenuToggle{display:none}
+.bookbslMobilePanel{display:contents}
 
 @media (min-width:681px){
   html body .top .shell{
@@ -25,6 +28,7 @@
     flex:0 0 auto!important;
     margin:0!important;
     text-decoration:none!important;
+    font-family:"Manrope",ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif!important;
     font-size:1.3rem!important;
     font-weight:800!important;
     line-height:1!important;
@@ -72,6 +76,10 @@
     display:contents!important;
   }
 
+  html body .top .bookbslMenuToggle{
+    display:none!important;
+  }
+
   html body .top .topnav>a:not(.header-cta),
   html body .top .topnav>.bookbslMobilePanel>a:not(.header-cta){
     box-sizing:border-box!important;
@@ -83,10 +91,11 @@
     max-width:none!important;
     height:42px!important;
     min-height:42px!important;
+    max-height:42px!important;
     margin:0!important;
     padding:0 14px!important;
     border:0!important;
-    border-radius:999px!important;
+    border-radius:0!important;
     background:transparent!important;
     color:#092A35!important;
     box-shadow:none!important;
@@ -98,15 +107,17 @@
     letter-spacing:0!important;
     white-space:nowrap!important;
     transform:none!important;
-    transition:color .16s ease,background-color .16s ease,transform .08s ease!important;
+    transition:color .16s ease,transform .08s ease!important;
   }
 
   html body .top .topnav>a:not(.header-cta):hover,
   html body .top .topnav>a:not(.header-cta):focus-visible,
   html body .top .topnav>.bookbslMobilePanel>a:not(.header-cta):hover,
-  html body .top .topnav>.bookbslMobilePanel>a:not(.header-cta):focus-visible{
+  html body .top .topnav>.bookbslMobilePanel>a:not(.header-cta):focus-visible,
+  html body .top .topnav>a[aria-current="page"],
+  html body .top .topnav>.bookbslMobilePanel>a[aria-current="page"]{
     color:#2456B3!important;
-    background:#fff!important;
+    background:transparent!important;
     text-decoration:underline!important;
     text-decoration-thickness:2px!important;
     text-underline-offset:6px!important;
@@ -115,20 +126,11 @@
   html body .top .topnav>a:not(.header-cta):active,
   html body .top .topnav>.bookbslMobilePanel>a:not(.header-cta):active{
     color:#2456B3!important;
-    background:#fff!important;
-    text-decoration:underline!important;
-    text-decoration-thickness:2px!important;
-    text-underline-offset:6px!important;
-    transform:translateY(1px)!important;
-  }
-
-  html body .top .topnav>a[aria-current="page"],
-  html body .top .topnav>.bookbslMobilePanel>a[aria-current="page"]{
-    color:#2456B3!important;
     background:transparent!important;
     text-decoration:underline!important;
     text-decoration-thickness:2px!important;
     text-underline-offset:6px!important;
+    transform:translateY(1px)!important;
   }
 
   html body .top .topnav .header-cta{
@@ -141,6 +143,7 @@
     max-width:154px!important;
     height:42px!important;
     min-height:42px!important;
+    max-height:42px!important;
     margin:0 0 0 10px!important;
     padding:0 16px!important;
     border:2px solid #092A35!important;
@@ -161,7 +164,8 @@
   }
 
   html body .top .topnav .header-cta:hover,
-  html body .top .topnav .header-cta:focus-visible{
+  html body .top .topnav .header-cta:focus-visible,
+  html body .top .topnav .header-cta:active{
     background:#2456B3!important;
     border-color:#2456B3!important;
     color:#fff!important;
@@ -169,10 +173,6 @@
   }
 
   html body .top .topnav .header-cta:active{
-    background:#2456B3!important;
-    border-color:#2456B3!important;
-    color:#fff!important;
-    text-decoration:none!important;
     transform:translateY(1px)!important;
   }
 
@@ -180,7 +180,18 @@
   html body .top .mobileCtaText{display:none!important}
 }
 
+@media (min-width:681px) and (max-width:900px){
+  html body .top .topin{gap:18px!important}
+  html body .top .brandSub{display:none!important}
+  html body .top .topnav{gap:8px!important}
+  html body .top .topnav>a:not(.header-cta),
+  html body .top .topnav>.bookbslMobilePanel>a:not(.header-cta){padding:0 9px!important;font-size:.86rem!important}
+  html body .top .topnav .header-cta{width:142px!important;min-width:142px!important;max-width:142px!important;flex-basis:142px!important;font-size:.86rem!important;padding:0 12px!important;margin-left:4px!important}
+}
+
 @media (max-width:680px){
+  html body .top{overflow:visible!important}
+
   html body .top .shell{
     width:min(100% - 22px,1160px)!important;
     margin:0 auto!important;
@@ -188,10 +199,11 @@
 
   html body .top .topin{
     box-sizing:border-box!important;
+    position:relative!important;
     height:70px!important;
     min-height:70px!important;
     display:grid!important;
-    grid-template-columns:minmax(0,1fr) auto!important;
+    grid-template-columns:minmax(0,1fr) 108px!important;
     align-items:center!important;
     column-gap:12px!important;
     row-gap:0!important;
@@ -199,12 +211,14 @@
   }
 
   html body .top .brand{
+    grid-column:1!important;
     min-width:0!important;
     width:auto!important;
     margin:0!important;
     display:flex!important;
     align-items:center!important;
     gap:8px!important;
+    font-family:"Manrope",ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif!important;
     font-size:1.05rem!important;
     font-weight:800!important;
     line-height:1!important;
@@ -212,6 +226,7 @@
   }
 
   html body .top .brandmark{
+    box-sizing:border-box!important;
     width:38px!important;
     height:38px!important;
     flex:0 0 38px!important;
@@ -221,16 +236,19 @@
     background:#092A35!important;
     color:#FFD84D!important;
     font-size:.74rem!important;
+    font-weight:800!important;
+    line-height:1!important;
   }
 
   html body .top .brandSub{display:none!important}
 
   html body .top .topnav{
+    grid-column:2!important;
     justify-self:end!important;
     align-self:center!important;
-    width:auto!important;
-    min-width:0!important;
-    max-width:max-content!important;
+    width:108px!important;
+    min-width:108px!important;
+    max-width:108px!important;
     margin:0!important;
     padding:0!important;
     display:flex!important;
@@ -245,21 +263,149 @@
     display:inline-flex!important;
     align-items:center!important;
     justify-content:center!important;
-    width:auto!important;
-    min-width:0!important;
-    max-width:max-content!important;
+    gap:8px!important;
+    width:108px!important;
+    min-width:108px!important;
+    max-width:108px!important;
     height:42px!important;
     min-height:42px!important;
+    max-height:42px!important;
     margin:0!important;
-    padding:8px 14px!important;
+    padding:0 12px!important;
     border:2px solid #092A35!important;
     border-radius:999px!important;
     background:#fff!important;
     color:#092A35!important;
+    box-shadow:none!important;
+    font-family:"Manrope",ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif!important;
     font-size:.84rem!important;
     font-weight:800!important;
     line-height:1!important;
     white-space:nowrap!important;
+    cursor:pointer!important;
+  }
+
+  html body .top .bookbslMenuToggle[aria-expanded="true"]{
+    background:#FFD84D!important;
+  }
+
+  html body .top .bookbslMenuToggle:focus-visible{
+    outline:3px solid #2456B3!important;
+    outline-offset:3px!important;
+  }
+
+  html body .top .bookbslMenuIcon{
+    width:17px!important;
+    height:14px!important;
+    display:grid!important;
+    align-content:space-between!important;
+    flex:0 0 17px!important;
+  }
+
+  html body .top .bookbslMenuIcon span{
+    display:block!important;
+    width:17px!important;
+    height:2px!important;
+    border-radius:999px!important;
+    background:currentColor!important;
+  }
+
+  html body .top .bookbslMobilePanel{
+    box-sizing:border-box!important;
+    display:none!important;
+    position:absolute!important;
+    z-index:80!important;
+    top:calc(100% + 8px)!important;
+    right:0!important;
+    left:auto!important;
+    width:min(330px,calc(100vw - 22px))!important;
+    padding:10px!important;
+    background:#fff!important;
+    border:2px solid #092A35!important;
+    border-radius:18px!important;
+    box-shadow:6px 6px 0 #092A35!important;
+  }
+
+  html body .top .topnav.is-open .bookbslMobilePanel{
+    display:grid!important;
+    gap:4px!important;
+  }
+
+  html body .top .bookbslMobilePanel>a{
+    box-sizing:border-box!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:flex-start!important;
+    width:100%!important;
+    min-width:0!important;
+    max-width:none!important;
+    height:46px!important;
+    min-height:46px!important;
+    max-height:46px!important;
+    margin:0!important;
+    padding:0 14px!important;
+    border:0!important;
+    border-radius:12px!important;
+    background:transparent!important;
+    color:#092A35!important;
+    box-shadow:none!important;
+    text-decoration:none!important;
+    font-family:"Manrope",ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif!important;
+    font-size:.92rem!important;
+    font-weight:800!important;
+    line-height:1!important;
+    letter-spacing:0!important;
+    white-space:nowrap!important;
+  }
+
+  html body .top .bookbslMobilePanel>a:not(.header-cta):hover,
+  html body .top .bookbslMobilePanel>a:not(.header-cta):focus-visible{
+    background:#DDF4EC!important;
+    color:#2456B3!important;
+    text-decoration:underline!important;
+    text-decoration-thickness:2px!important;
+    text-underline-offset:5px!important;
+  }
+
+  html body .top .bookbslMobilePanel>a:not(.header-cta):active,
+  html body .top .bookbslMobilePanel>a[aria-current="page"]{
+    background:#EDF3FF!important;
+    color:#2456B3!important;
+    text-decoration:underline!important;
+    text-decoration-thickness:2px!important;
+    text-underline-offset:5px!important;
+  }
+
+  html body .top .bookbslMobilePanel .header-cta,
+  html body .top .bookbslMobilePanel .navCta{
+    box-sizing:border-box!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    width:100%!important;
+    min-width:0!important;
+    max-width:none!important;
+    height:46px!important;
+    min-height:46px!important;
+    max-height:46px!important;
+    margin:4px 0 0!important;
+    padding:0 14px!important;
+    border:2px solid #092A35!important;
+    border-radius:12px!important;
+    background:#092A35!important;
+    color:#fff!important;
+    text-decoration:none!important;
+    font-size:.92rem!important;
+    font-weight:800!important;
+    line-height:1!important;
+  }
+
+  html body .top .bookbslMobilePanel .header-cta:hover,
+  html body .top .bookbslMobilePanel .header-cta:focus-visible,
+  html body .top .bookbslMobilePanel .header-cta:active{
+    background:#2456B3!important;
+    border-color:#2456B3!important;
+    color:#fff!important;
   }
 
   html body .top .desktopCtaText{display:none!important}
