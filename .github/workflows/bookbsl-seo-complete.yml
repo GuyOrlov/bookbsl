@@ -1,0 +1,46 @@
+name: Complete BookBSL SEO setup
+
+on:
+  push:
+    paths:
+      - '.github/workflows/bookbsl-seo-complete.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  seo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Apply BookBSL SEO improvements
+        run: python .github/scripts/bookbsl_seo_complete.py
+      - name: Verify files
+        run: |
+          test -f og-image.png
+          test -f favicon.png
+          test -f apple-touch-icon.png
+          test -f page-analytics.js
+          test -f stats.html
+          test -f bsl-interpreter-events.html
+          test -f bsl-interpreter-work-meetings.html
+          test -f online-bsl-interpreter.html
+          test -f bsl-interpreter-cost.html
+          test -f how-to-book-bsl-interpreter.html
+          test -f bsl-interpreter-healthcare.html
+          test -f bsl-interpreter-education.html
+          grep -q 'og:image' index.html
+          grep -q 'noindex,follow' privacy.html
+          grep -q 'bsl-interpreter-events.html' sitemap.xml
+      - name: Commit SEO update
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add .
+          if git diff --cached --quiet; then
+            echo 'No changes needed'
+          else
+            git commit -m 'Complete BookBSL SEO setup and add booking guides'
+            git push
+          fi
