@@ -18,7 +18,7 @@ GUIDE_PAGES = {
 }
 
 STYLE_ID = "bookbsl-global-nav-footer-20260912"
-NAV_SCRIPT = '<script src="nav-polish.js?v=20260912-4"></script>'
+NAV_SCRIPT = '<script src="nav-polish.js?v=20260912-5"></script>'
 
 STYLE = f'''<style id="{STYLE_ID}">
 /* One BookBSL header and footer across every page with a BookBSL header */
