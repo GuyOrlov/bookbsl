@@ -1,0 +1,48 @@
+name: BookBSL marketing content upgrade
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/scripts/marketing_content_upgrade.py'
+      - '.github/workflows/marketing-content-upgrade.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  upgrade:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Apply marketing and content upgrade
+        run: python .github/scripts/marketing_content_upgrade.py
+
+      - name: Verify new pages and conversion hierarchy
+        run: |
+          grep -q 'Popular guide' index.html
+          grep -q 'Access preparation' index.html
+          grep -q 'A specialist workforce at a glance.' data.html
+          grep -q 'before the meeting, appointment or event.' awareness.html
+          test -f access-to-work-bsl-interpreter.html
+          test -f one-or-two-bsl-interpreters.html
+          test -f bsl-interpreter-legal-official.html
+          test -f how-far-ahead-book-bsl-interpreter.html
+          grep -q 'access-to-work-bsl-interpreter.html' sitemap.xml
+          grep -q 'one-or-two-bsl-interpreters.html' sitemap.xml
+          grep -q 'bsl-interpreter-legal-official.html' sitemap.xml
+          grep -q 'how-far-ahead-book-bsl-interpreter.html' sitemap.xml
+
+      - name: Commit upgrade
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add index.html data.html awareness.html law.html sitemap.xml *.html
+          if git diff --cached --quiet; then
+            echo 'No changes to commit'
+          else
+            git commit -m 'Upgrade BookBSL marketing content and data visualisation'
+            git push
+          fi
