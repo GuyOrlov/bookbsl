@@ -242,5 +242,5 @@ const pages=[["Home","home"],["Booking a BSL interpreter for events","bsl-interp
 pages.forEach(async ([label,slug])=>document.getElementById('p-'+slug).textContent=(await get('bookbsl-guyorlov-page-'+slug)).toLocaleString('en-GB'));
 [['visits','bookbsl-guyorlov-202609-visits'],['starts','bookbsl-guyorlov-202609-starts'],['finishes','bookbsl-guyorlov-202609-finishes'],['quotes','bookbsl-guyorlov-202609-quotes']].forEach(async ([id,k])=>document.getElementById('f-'+id).textContent=(await get(k)).toLocaleString('en-GB'));
 </script>
-<script src="nav-polish.js?v=20260912-4"></script>
+<script src="nav-polish.js?v=20260912-5"></script>
 </body></html>
