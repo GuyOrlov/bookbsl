@@ -41,7 +41,10 @@ for filename, (prefix, accent) in GUIDES.items():
         raise SystemExit(f"Missing guide: {filename}")
     text = path.read_text(encoding="utf-8")
 
-    if BRAND_NEW not in text:
+    # The live BookBSL header may already use the newer shared brand markup.
+    # Treat any existing brandmark as already polished so this script is safe
+    # to run again after later content/branding edits.
+    if 'class="brandmark"' not in text:
         if BRAND_OLD not in text:
             raise SystemExit(f"Brand marker not found in {filename}")
         text = text.replace(BRAND_OLD, BRAND_NEW, 1)
