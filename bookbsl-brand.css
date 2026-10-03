@@ -80,3 +80,15 @@ footer a{color:#fff!important}.footerGroupTitle{color:#BFE5D7!important}
 
 @media(max-width:680px){h1{max-width:none!important}.formCard{border-radius:16px!important;box-shadow:0 8px 22px rgba(17,24,39,.10)!important}.choice span{min-height:58px!important}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important}}
+
+
+/* SEO trust + breadcrumb components */
+.seoBreadcrumbs{padding:14px 0 0!important;font-size:.86rem!important;color:var(--muted)!important}
+.seoBreadcrumbs a{color:var(--brand-dark)!important;font-weight:700!important;text-decoration:none!important}
+.seoBreadcrumbs a:hover{text-decoration:underline!important}
+.seoBreadcrumbs .sep{padding:0 7px!important;color:var(--muted)!important}
+.seoAuthor{padding:34px 0 42px!important;background:#fff!important;border-top:1px solid var(--line)!important}
+.seoAuthorCard{max-width:820px!important;padding:20px 22px!important;border:1px solid var(--line)!important;border-radius:16px!important;background:var(--soft)!important}
+.seoAuthorLabel{margin:0 0 4px!important;font-size:.76rem!important;font-weight:700!important;letter-spacing:.08em!important;text-transform:uppercase!important;color:var(--brand-dark)!important}
+.seoAuthorCard p{margin:0!important}
+.seoAuthorCard a{font-weight:700!important;color:var(--brand-dark)!important}
