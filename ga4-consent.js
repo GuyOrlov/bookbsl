@@ -87,10 +87,10 @@
     const style = document.createElement('style');
     style.id = 'bookbslAnalyticsStyle';
     style.textContent = `
-      #bookbslAnalyticsBanner{position:fixed;z-index:9999;left:16px;right:16px;bottom:16px;background:#fff;color:#142126;border:2px solid #092A35;border-radius:20px;box-shadow:7px 7px 0 #092A35;font-family:Manrope,system-ui,-apple-system,"Segoe UI",sans-serif}
+      #bookbslAnalyticsBanner{position:fixed;z-index:9999;left:16px;right:16px;bottom:16px;background:#fff;color:#111827;border:2px solid #CBD5CF;border-radius:16px;box-shadow:0 10px 30px rgba(17,24,39,.14);font-family:"Atkinson Hyperlegible",Arial,system-ui,-apple-system,"Segoe UI",sans-serif}
       .bookbslAnalyticsInner{width:min(1120px,100%);margin:auto;padding:18px;display:flex;align-items:center;justify-content:space-between;gap:22px}
-      .bookbslAnalyticsText{display:grid;gap:5px;max-width:760px}.bookbslAnalyticsText strong{font-size:1.05rem;color:#092A35}.bookbslAnalyticsText span{font-size:.9rem;line-height:1.45;color:#405159}.bookbslAnalyticsText a{font-size:.86rem;font-weight:800;color:#2456B3;text-underline-offset:3px}
-      .bookbslAnalyticsActions{display:flex;gap:9px;flex:0 0 auto}.bookbslAnalyticsActions button{min-height:44px;padding:9px 15px;border:2px solid #092A35;border-radius:999px;background:#fff;color:#092A35;font:inherit;font-weight:850;cursor:pointer}.bookbslAnalyticsActions button.primary{background:#FFD84D}.bookbslAnalyticsActions button:focus-visible{outline:3px solid #2456B3;outline-offset:3px}
+      .bookbslAnalyticsText{display:grid;gap:5px;max-width:760px}.bookbslAnalyticsText strong{font-size:1.05rem;color:#111827}.bookbslAnalyticsText span{font-size:.9rem;line-height:1.45;color:#4B5563}.bookbslAnalyticsText a{font-size:.86rem;font-weight:800;color:#006B57;text-underline-offset:3px}
+      .bookbslAnalyticsActions{display:flex;gap:9px;flex:0 0 auto}.bookbslAnalyticsActions button{min-height:44px;padding:9px 15px;border:2px solid #006B57;border-radius:10px;background:#fff;color:#111827;font:inherit;font-weight:850;cursor:pointer}.bookbslAnalyticsActions button.primary{background:#006B57;color:#fff;border-color:#006B57}.bookbslAnalyticsActions button:focus-visible{outline:3px solid #006B57;outline-offset:3px}
       @media(max-width:700px){#bookbslAnalyticsBanner{left:10px;right:10px;bottom:10px}.bookbslAnalyticsInner{display:grid;padding:15px}.bookbslAnalyticsActions{display:grid;grid-template-columns:1fr 1fr}.bookbslAnalyticsActions button{width:100%}}
     `;
     document.head.appendChild(style);
