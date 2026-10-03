@@ -752,9 +752,9 @@ h1 span{color:var(--blue,var(--bookbsl-blue))}
     gap:12px!important;
   }
   html body .checker .checkIntro{
-    grid-template-columns:minmax(300px,1fr) minmax(360px,500px)!important;
-    align-items:end!important;
-    gap:24px!important;
+    grid-template-columns:1fr!important;
+    align-items:start!important;
+    gap:8px!important;
     margin-bottom:10px!important;
   }
   html body .checker .checkIntro h2{
@@ -763,14 +763,25 @@ h1 span{color:var(--blue,var(--bookbsl-blue))}
     letter-spacing:-.045em!important;
     margin-bottom:0!important;
     max-width:none!important;
-    white-space:nowrap!important;
+    white-space:normal!important;
   }
   html body .checker .progressMeta{
+    width:100%!important;
+    min-width:0!important;
+    display:grid!important;
+    grid-template-columns:auto minmax(0,1fr)!important;
     align-items:center!important;
-    gap:12px!important;
+    justify-content:stretch!important;
+    gap:14px!important;
+  }
+  html body .checker .progressMeta .progressText{
+    margin:0!important;
+    white-space:nowrap!important;
   }
   html body .checker .progressMeta .track{
-    min-width:210px!important;
+    width:100%!important;
+    min-width:0!important;
+    max-width:none!important;
   }
   html body .checker .checkReassurance{
     padding:10px 16px!important;
