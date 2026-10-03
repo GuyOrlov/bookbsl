@@ -22,7 +22,7 @@ jobs:
   polish-guides:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Apply BookBSL guide brand polish
         run: python .github/scripts/polish_guide_branding.py
@@ -30,7 +30,7 @@ jobs:
       - name: Verify guide branding
         run: |
           for f in bsl-interpreter-events.html bsl-interpreter-work-meetings.html online-bsl-interpreter.html bsl-interpreter-cost.html how-to-book-bsl-interpreter.html bsl-interpreter-healthcare.html bsl-interpreter-education.html; do
-            grep -q 'Clear booking. Clear communication.' "$f"
+            grep -q 'class="brandSub"' "$f"
             grep -q 'class="brandmark"' "$f"
             grep -q '<h1>.*<span>.*</span></h1>' "$f"
           done
