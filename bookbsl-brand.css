@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap');
+
+/* BookBSL accessible green design system */
+:root{
+  --brand:#006B57;--brand-dark:#005A47;--brand-soft:#E8F3EF;
+  --ink:#111827;--ink2:#1F2937;--paper:#FFFFFF;--soft:#F6F8F7;
+  --mint:#E8F3EF;--yellow:#D9F3E7;--lime:#D9F3E7;--blue:#006B57;
+  --violet:#006B57;--text:#111827;--muted:#4B5563;--line:#CBD5CF;
+  --bad:#B42318;--shadow:0 10px 30px rgba(17,24,39,.10);
+}
+html{background:#fff}
+body{font-family:"Atkinson Hyperlegible",Arial,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif!important;color:var(--text);background:var(--soft);line-height:1.55;letter-spacing:.005em}
+button,input,select,textarea{font-family:inherit!important}
+p,li{max-width:72ch}a{text-underline-offset:3px}
+
+.top{background:rgba(255,255,255,.97)!important;border-bottom:1px solid var(--line)!important;backdrop-filter:blur(12px)}
+.brand{font-family:"Atkinson Hyperlegible",Arial,sans-serif!important;letter-spacing:-.025em!important;color:var(--ink)!important}
+.brandmark{background:var(--brand)!important;color:#fff!important;border-radius:10px!important;box-shadow:none!important}
+.brand b{color:var(--brand)!important}.brandSub{color:var(--muted)!important}
+.topnav a{color:var(--ink)}.topnav a:hover{color:var(--brand)}
+.header-cta,.topnav .header-cta,.topnav .navCta{background:var(--brand)!important;border-color:var(--brand)!important;color:#fff!important;border-radius:10px!important;box-shadow:none!important}
+.header-cta:hover,.topnav .header-cta:hover,.topnav .navCta:hover{background:var(--brand-dark)!important}
+
+h1,h2,h3,.countryName,.num,.evidenceBig,.evidence95,.scoreHuge,.usageNumber{font-family:"Atkinson Hyperlegible",Arial,sans-serif!important;color:var(--ink);letter-spacing:-.035em!important}
+h1{max-width:13ch!important;line-height:.96!important}h1 span,h2 span{color:var(--brand)!important}
+.lead,.micro,.updated{color:var(--muted)!important}
+
+.btn{border-color:var(--brand)!important;border-radius:10px!important;color:var(--brand)!important;background:#fff!important;box-shadow:none!important}
+.btn:hover{background:var(--brand-soft)!important}
+.btn.primary,.btn.dark,.band .btn,.cta .btn,.ctaBand .btn{background:var(--brand)!important;border-color:var(--brand)!important;color:#fff!important;box-shadow:none!important}
+.btn.primary:hover,.btn.dark:hover,.band .btn:hover,.cta .btn:hover,.ctaBand .btn:hover{background:var(--brand-dark)!important}
+.btn:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,.choice input:focus-visible+span,summary:focus-visible{outline:3px solid var(--brand)!important;outline-offset:3px!important}
+
+.kicker,.tag{background:var(--brand-soft)!important;border-color:var(--brand)!important;color:var(--brand-dark)!important}
+.eyebrow{color:var(--brand)!important}
+.heroCard,.notice,.score,.band,.whoCard.dark{background:var(--ink)!important;box-shadow:none!important}
+.heroCard .eyebrow,.score .eyebrow,.footerGroupTitle{color:#BFE5D7!important}
+.heroCard p,.notice p,.score p,.band p,.whoCard.dark p{color:#E5E7EB!important}
+.miniNo,.featureIcon,.icon{background:var(--brand)!important;color:#fff!important}
+.proofGrid,.feature,.card,.country,.stat,.whoCard,.support,.usageCard,.sourceCard{border-color:var(--line)!important;box-shadow:none!important}
+.feature:first-child,.card.mint,.country:nth-child(2),.country:nth-child(4){background:var(--brand-soft)!important}
+
+.checker{background:var(--brand-soft)!important;border-color:var(--brand)!important}
+.formCard{border-color:var(--line)!important;border-radius:20px!important;box-shadow:var(--shadow)!important}
+.track{border-color:var(--line)!important;background:#fff!important}.track span{background:var(--brand)!important}
+.qno{background:var(--brand)!important;color:#fff!important}
+.choice span{position:relative;border:2px solid var(--line)!important;border-radius:12px!important;background:#fff!important;color:var(--ink)!important;transition:border-color .15s ease,background .15s ease}
+.choice:hover span{border-color:var(--brand)!important}
+.choice input:checked+span{padding-right:46px!important;background:var(--brand-soft)!important;border:3px solid var(--brand)!important;color:var(--brand-dark)!important;box-shadow:none!important}
+.choice input:checked+span::after{content:"✓";position:absolute;right:12px;top:50%;transform:translateY(-50%);width:24px;height:24px;display:grid;place-items:center;border-radius:50%;background:var(--brand);color:#fff;font-weight:700}
+.field input,.field select,.field textarea{border-color:#9CA3AF!important;border-radius:10px!important}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--brand)!important}
+.tip,.callout,.note{background:#F0F7F4!important;border-left-color:var(--brand)!important;color:#243B34!important}
+.roleExplain,.conditionalHint,.smartHint{background:var(--soft)!important;border-color:var(--line)!important}
+.error{color:var(--bad)!important}
+
+.scoreHuge{color:#BFE5D7!important}
+.status,.goodBox,.quoteBox,.bigCard{background:var(--brand-soft)!important;border-color:var(--brand)!important;color:var(--ink)!important;box-shadow:none!important}
+.goodBox{color:var(--brand-dark)!important}.actionIcon{background:var(--brand-soft)!important;color:var(--brand-dark)!important}
+.summaryCard{background:var(--soft)!important;border-color:var(--line)!important}
+
+.evidence{background:var(--ink)!important;box-shadow:none!important}
+.evidence .eyebrow{color:#BFE5D7!important}.evidenceBig,.evidence95{color:#BFE5D7!important}
+.stat:nth-child(1),.stat:nth-child(2){background:var(--brand-soft)!important}
+.sourceLink,.source{border-bottom-color:var(--brand)!important}
+
+footer{background:var(--ink)!important}footer p,.foot p{color:#D1D5DB!important}
+footer a{color:#fff!important}.footerGroupTitle{color:#BFE5D7!important}
+
+@media(max-width:680px){h1{max-width:none!important}.formCard{border-radius:16px!important;box-shadow:0 8px 22px rgba(17,24,39,.10)!important}.choice span{min-height:58px!important}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important}}
