@@ -5,6 +5,29 @@
     const nav = topin && topin.querySelector('.topnav');
     if (!header || !topin || !nav || nav.querySelector('.bookbslMenuToggle')) return;
 
+    const brandSub = topin.querySelector('.brandSub');
+    if (brandSub) brandSub.textContent = 'A cSeeker service';
+
+    const dataLink = Array.from(nav.querySelectorAll('a')).find(a => (a.getAttribute('href') || '').endsWith('data.html'));
+    if (dataLink) {
+      dataLink.setAttribute('href', 'bsl-interpreter-cost.html');
+      dataLink.textContent = 'Pricing';
+      dataLink.removeAttribute('aria-current');
+    }
+
+    const headerCta = nav.querySelector('.header-cta');
+    if (headerCta) {
+      const desktopText = headerCta.querySelector('.desktopCtaText');
+      const mobileText = headerCta.querySelector('.mobileCtaText');
+      if (desktopText) desktopText.textContent = 'Start booking';
+      if (mobileText) mobileText.textContent = 'Start booking';
+    }
+
+    const pricingLink = Array.from(nav.querySelectorAll('a')).find(a => (a.getAttribute('href') || '').endsWith('bsl-interpreter-cost.html'));
+    if (pricingLink && /\/bsl-interpreter-cost\.html$/.test(window.location.pathname)) {
+      pricingLink.setAttribute('aria-current', 'page');
+    }
+
     const items = Array.from(nav.children);
     if (!items.length) return;
 
