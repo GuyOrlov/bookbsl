@@ -6,7 +6,7 @@
   --ink:#111827;--ink2:#1F2937;--paper:#FFFFFF;--soft:#F6F8F7;
   --mint:#E8F3EF;--yellow:#D9F3E7;--lime:#D9F3E7;--blue:#006B57;
   --violet:#006B57;--text:#111827;--muted:#4B5563;--line:#CBD5CF;
-  --bad:#B42318;--shadow:0 10px 30px rgba(17,24,39,.10);
+  --bad:#B42318;--control-border:#6B7280;--focus-on-dark:#BFE5D7;--shadow:0 10px 30px rgba(17,24,39,.10);
 }
 html{background:#fff}
 body{font-family:"Atkinson Hyperlegible",Arial,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif!important;color:var(--text);background:var(--soft);line-height:1.55;letter-spacing:.005em}
@@ -31,6 +31,17 @@ h1{max-width:13ch!important;line-height:.96!important}h1 span,h2 span{color:var(
 .btn.primary:hover,.btn.dark:hover,.band .btn:hover,.cta .btn:hover,.ctaBand .btn:hover{background:var(--brand-dark)!important}
 .btn:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,.choice input:focus-visible+span,summary:focus-visible{outline:3px solid var(--brand)!important;outline-offset:3px!important}
 
+/* WCAG 2.2 AA: focus indicator must also contrast on dark surfaces */
+.heroCard :focus-visible,
+.notice :focus-visible,
+.score :focus-visible,
+.evidence :focus-visible,
+.band :focus-visible,
+.whoCard.dark :focus-visible,
+footer :focus-visible{
+  outline-color:var(--focus-on-dark)!important;
+}
+
 .kicker,.tag{background:var(--brand-soft)!important;border-color:var(--brand)!important;color:var(--brand-dark)!important}
 .eyebrow{color:var(--brand)!important}
 .heroCard,.notice,.score,.band,.whoCard.dark{background:var(--ink)!important;box-shadow:none!important}
@@ -44,11 +55,11 @@ h1{max-width:13ch!important;line-height:.96!important}h1 span,h2 span{color:var(
 .formCard{border-color:var(--line)!important;border-radius:20px!important;box-shadow:var(--shadow)!important}
 .track{border-color:var(--line)!important;background:#fff!important}.track span{background:var(--brand)!important}
 .qno{background:var(--brand)!important;color:#fff!important}
-.choice span{position:relative;border:2px solid var(--line)!important;border-radius:12px!important;background:#fff!important;color:var(--ink)!important;transition:border-color .15s ease,background .15s ease}
+.choice span{position:relative;border:2px solid var(--control-border)!important;border-radius:12px!important;background:#fff!important;color:var(--ink)!important;transition:border-color .15s ease,background .15s ease}
 .choice:hover span{border-color:var(--brand)!important}
 .choice input:checked+span{padding-right:46px!important;background:var(--brand-soft)!important;border:3px solid var(--brand)!important;color:var(--brand-dark)!important;box-shadow:none!important}
 .choice input:checked+span::after{content:"✓";position:absolute;right:12px;top:50%;transform:translateY(-50%);width:24px;height:24px;display:grid;place-items:center;border-radius:50%;background:var(--brand);color:#fff;font-weight:700}
-.field input,.field select,.field textarea{border-color:#9CA3AF!important;border-radius:10px!important}
+.field input,.field select,.field textarea{border-color:var(--control-border)!important;border-radius:10px!important}
 .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--brand)!important}
 .tip,.callout,.note{background:#F0F7F4!important;border-left-color:var(--brand)!important;color:#243B34!important}
 .roleExplain,.conditionalHint,.smartHint{background:var(--soft)!important;border-color:var(--line)!important}
