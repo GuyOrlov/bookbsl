@@ -154,3 +154,45 @@ html body .heroTrust{
   }
 }
 /* End compact hero/top treatment */
+
+/* BookBSL desktop page-title width fix — 2026-10-04 */
+@media (min-width:901px){
+  /* The previous 13ch cap made guide-page heroes wrap into 3–5 lines
+     and left most of the desktop canvas unused. */
+  html body .hero h1{
+    max-width:22ch!important;
+    width:auto!important;
+    text-wrap:balance;
+  }
+
+  html body .hero>.shell:not(.heroGrid) h1{
+    max-width:21ch!important;
+  }
+
+  html body .hero>.shell:not(.heroGrid) .lead{
+    max-width:1040px!important;
+    width:100%!important;
+    font-size:clamp(1.08rem,1.45vw,1.28rem)!important;
+    line-height:1.55!important;
+  }
+
+  html body .hero>.shell:not(.heroGrid) .updated{
+    max-width:1040px!important;
+  }
+
+  /* Split-layout pages still get a wider title inside their own column,
+     without breaking the card/grid beside them. */
+  html body .hero .heroGrid h1,
+  html body .hero .heroIntro h1,
+  html body .hero .heroCopy h1{
+    max-width:none!important;
+    width:100%!important;
+    text-wrap:balance;
+  }
+
+  html body .hero .heroGrid .lead,
+  html body .hero .heroBody .lead,
+  html body .hero .heroCopy .lead{
+    max-width:none!important;
+  }
+}
