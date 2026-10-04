@@ -102,3 +102,55 @@ footer a{color:#fff!important}.footerGroupTitle{color:#BFE5D7!important}
   .seoAuthor .shell{width:min(100% - 22px,1160px)!important}
   .seoAuthorCard{padding:18px!important}
 }
+
+
+/* BookBSL compact hero/top treatment — 2026-10-04 */
+html body .hero{
+  position:relative;
+  padding:24px 0 24px!important;
+  background:
+    radial-gradient(circle at 88% 10%, rgba(255,216,77,.22), transparent 24%),
+    linear-gradient(180deg,#ffffff 0%,#f7faf8 100%);
+  border-bottom:1px solid rgba(9,42,53,.08);
+  overflow:hidden;
+}
+html body .hero .heroGrid{
+  gap:30px!important;
+  align-items:center!important;
+}
+html body .hero .heroCopy{
+  justify-content:center;
+}
+html body .hero .kicker{
+  margin-bottom:11px!important;
+}
+html body .hero h1{
+  margin-bottom:11px!important;
+}
+html body .hero .heroSupport{
+  margin-bottom:7px!important;
+}
+html body .hero .lead{
+  margin-bottom:10px!important;
+}
+html body .hero .actions{
+  margin:15px 0 8px!important;
+}
+html body .hero .heroCard{
+  padding:24px!important;
+}
+html body .heroTrust{
+  margin-top:0!important;
+}
+@media (max-width:680px){
+  html body .hero{
+    padding:16px 0 19px!important;
+  }
+  html body .hero .heroGrid{
+    gap:16px!important;
+  }
+  html body .hero .heroCard{
+    padding:20px!important;
+  }
+}
+/* End compact hero/top treatment */
