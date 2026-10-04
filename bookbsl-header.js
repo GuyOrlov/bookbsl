@@ -8,12 +8,29 @@
     const brandSub = topin.querySelector('.brandSub');
     if (brandSub) brandSub.textContent = 'A cSeeker service';
 
-    const dataLink = Array.from(nav.querySelectorAll('a')).find(a => (a.getAttribute('href') || '').endsWith('data.html'));
-    if (dataLink) {
-      dataLink.setAttribute('href', 'bsl-interpreter-cost.html');
-      dataLink.textContent = 'Pricing';
-      dataLink.removeAttribute('aria-current');
+    // Keep the main information architecture consistent across every page.
+    // Older page headers may not yet include Data and Laws, so add them once here.
+    const existingLinks = () => Array.from(nav.querySelectorAll('a'));
+    const findByHref = suffix => existingLinks().find(a => (a.getAttribute('href') || '').endsWith(suffix));
+
+    const dataLink = findByHref('data.html');
+    const pricingLinkExisting = findByHref('bsl-interpreter-cost.html');
+    if (dataLink && !pricingLinkExisting && dataLink.textContent.trim().toLowerCase() === 'data') {
+      // Leave an intentional Data link alone; pricing is added separately below when missing.
     }
+
+    const headerCtaBeforeInsert = nav.querySelector('.header-cta');
+    const insertBeforeCta = (href, label) => {
+      if (findByHref(href)) return;
+      const a = document.createElement('a');
+      a.href = href;
+      a.textContent = label;
+      if (headerCtaBeforeInsert) nav.insertBefore(a, headerCtaBeforeInsert);
+      else nav.appendChild(a);
+    };
+
+    insertBeforeCta('data.html', 'Data');
+    insertBeforeCta('law.html', 'Laws');
 
     const headerCta = nav.querySelector('.header-cta');
     if (headerCta) {
@@ -23,10 +40,19 @@
       if (mobileText) mobileText.textContent = 'Start booking';
     }
 
-    const pricingLink = Array.from(nav.querySelectorAll('a')).find(a => (a.getAttribute('href') || '').endsWith('bsl-interpreter-cost.html'));
+    const pricingLink = findByHref('bsl-interpreter-cost.html');
     if (pricingLink && /\/bsl-interpreter-cost\.html$/.test(window.location.pathname)) {
       pricingLink.setAttribute('aria-current', 'page');
     }
+    const currentMap = [
+      ['data.html', /\/data\.html$/],
+      ['law.html', /\/law\.html$/],
+      ['awareness.html', /\/awareness\.html$/]
+    ];
+    currentMap.forEach(([href, pattern]) => {
+      const link = findByHref(href);
+      if (link && pattern.test(window.location.pathname)) link.setAttribute('aria-current', 'page');
+    });
 
     const items = Array.from(nav.children);
     if (!items.length) return;
