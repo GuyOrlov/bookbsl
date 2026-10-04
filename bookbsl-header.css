@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Lexend:wght@500;600;700;800&display=swap');
+
 /* Canonical BookBSL header and navigation styles.
    This is the only stylesheet that should control header/menu geometry. */
 
@@ -28,7 +30,7 @@
     flex:0 0 auto!important;
     margin:0!important;
     text-decoration:none!important;
-    font-family:"Manrope",ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif!important;
+    font-family:"Atkinson Hyperlegible",Arial,sans-serif!important;
     font-size:1.3rem!important;
     font-weight:800!important;
     line-height:1!important;
@@ -100,7 +102,7 @@
     color:#092A35!important;
     box-shadow:none!important;
     text-decoration:none!important;
-    font-family:"Manrope",ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif!important;
+    font-family:"Atkinson Hyperlegible",Arial,sans-serif!important;
     font-size:.92rem!important;
     font-weight:800!important;
     line-height:1!important;
@@ -152,7 +154,7 @@
     color:#fff!important;
     box-shadow:none!important;
     text-decoration:none!important;
-    font-family:"Manrope",ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif!important;
+    font-family:"Atkinson Hyperlegible",Arial,sans-serif!important;
     font-size:.92rem!important;
     font-weight:800!important;
     line-height:1!important;
@@ -218,7 +220,7 @@
     display:flex!important;
     align-items:center!important;
     gap:8px!important;
-    font-family:"Manrope",ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif!important;
+    font-family:"Atkinson Hyperlegible",Arial,sans-serif!important;
     font-size:1.05rem!important;
     font-weight:800!important;
     line-height:1!important;
@@ -277,7 +279,7 @@
     background:#fff!important;
     color:#092A35!important;
     box-shadow:none!important;
-    font-family:"Manrope",ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif!important;
+    font-family:"Atkinson Hyperlegible",Arial,sans-serif!important;
     font-size:.84rem!important;
     font-weight:800!important;
     line-height:1!important;
@@ -350,7 +352,7 @@
     color:#092A35!important;
     box-shadow:none!important;
     text-decoration:none!important;
-    font-family:"Manrope",ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif!important;
+    font-family:"Atkinson Hyperlegible",Arial,sans-serif!important;
     font-size:.92rem!important;
     font-weight:800!important;
     line-height:1!important;
@@ -410,4 +412,61 @@
 
   html body .top .desktopCtaText{display:none!important}
   html body .top .mobileCtaText{display:inline!important}
+}
+
+/* BookBSL typography refresh — 2026-10-04 */
+html body .top .brand{
+  font-family:"Lexend",ui-sans-serif,system-ui,sans-serif!important;
+  font-weight:700!important;
+  letter-spacing:-.035em!important;
+}
+html body .top .brandmark{
+  font-family:"Lexend",ui-sans-serif,system-ui,sans-serif!important;
+  font-weight:800!important;
+  letter-spacing:-.02em!important;
+}
+html body .top .brandSub{
+  font-family:"Atkinson Hyperlegible",Arial,sans-serif!important;
+  font-weight:700!important;
+  letter-spacing:.01em!important;
+}
+html body .top .topnav a,
+html body .top .bookbslMenuToggle{
+  font-family:"Atkinson Hyperlegible",Arial,sans-serif!important;
+  letter-spacing:.01em!important;
+}
+
+/* Six-link desktop navigation stays compact without crowding the brand. */
+@media (min-width:901px){
+  html body .top .topnav{gap:8px!important}
+  html body .top .topnav>.bookbslMobilePanel>a:not(.header-cta){
+    padding:0 10px!important;
+    font-size:.9rem!important;
+  }
+  html body .top .topnav .header-cta{
+    width:146px!important;
+    min-width:146px!important;
+    max-width:146px!important;
+    flex-basis:146px!important;
+    margin-left:4px!important;
+  }
+}
+@media (min-width:681px) and (max-width:900px){
+  html body .top .topin{gap:12px!important}
+  html body .top .brand{font-size:1.08rem!important}
+  html body .top .brandmark{width:38px!important;height:38px!important;flex-basis:38px!important}
+  html body .top .topnav{gap:3px!important}
+  html body .top .topnav>.bookbslMobilePanel>a:not(.header-cta){
+    padding:0 6px!important;
+    font-size:.78rem!important;
+  }
+  html body .top .topnav .header-cta{
+    width:124px!important;
+    min-width:124px!important;
+    max-width:124px!important;
+    flex-basis:124px!important;
+    padding:0 9px!important;
+    font-size:.8rem!important;
+    margin-left:2px!important;
+  }
 }
