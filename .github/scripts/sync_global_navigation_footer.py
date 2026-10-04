@@ -20,6 +20,7 @@ GUIDE_PAGES = {
 STYLE_ID = "bookbsl-global-nav-footer-20260912"
 HEADER_STYLESHEET = '<link rel="stylesheet" href="bookbsl-header.css?v=20261004-1">'
 HEADER_SCRIPT = '<script src="bookbsl-header.js?v=20261004-1" defer></script>'
+BRAND_STYLESHEET_VERSION = "20261004-3"
 
 STYLE = f'''<style id="{STYLE_ID}">
 /* Shared BookBSL footer. Header/navigation is controlled only by bookbsl-header.css. */
@@ -100,6 +101,12 @@ def ensure_header_assets_last(text: str) -> str:
     text = re.sub(r'\s*<script src="nav-polish\.js(?:\?[^\"]*)?"></script>', '', text)
     text = re.sub(r'\s*<script src="bookbsl-header\.js(?:\?[^\"]*)?"(?:\s+defer)?></script>', '', text)
     text = re.sub(r'\s*<link rel="stylesheet" href="bookbsl-header\.css(?:\?[^\"]*)?">', '', text)
+    # Force a fresh shared brand stylesheet after global visual changes.
+    text = re.sub(
+        r'bookbsl-brand\.css(?:\?v=[^"\']+)?',
+        f'bookbsl-brand.css?v={BRAND_STYLESHEET_VERSION}',
+        text
+    )
     if "</head>" not in text:
         raise RuntimeError("Missing </head>")
     assets = HEADER_STYLESHEET + "\n" + HEADER_SCRIPT
