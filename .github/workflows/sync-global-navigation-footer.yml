@@ -34,9 +34,12 @@ jobs:
               count=$((count + 1))
               grep -q '>Guides</a><a href="bsl-interpreter-cost.html"' "$page"
               grep -q '>Pricing</a><a href="awareness.html"' "$page"
+              grep -q '>Access preparation</a><a href="data.html"' "$page"
+              grep -q '>Data</a><a href="law.html"' "$page"
+              grep -q '>Laws</a><a class="header-cta navCta"' "$page"
               grep -q 'desktopCtaText">Start booking' "$page"
-              grep -q 'bookbsl-header.css?v=20260912-2' "$page"
-              grep -q 'bookbsl-header.js?v=20260912-1' "$page"
+              grep -q 'bookbsl-header.css?v=20261004-1' "$page"
+              grep -q 'bookbsl-header.js?v=20261004-1' "$page"
               grep -q 'bookbsl-global-nav-footer-20260912' "$page"
               if grep -q 'nav-polish.js' "$page"; then
                 echo "Old nav-polish.js still present in $page"
