@@ -11,6 +11,7 @@
   }
 
   function loadAnalytics(){
+    window['ga-disable-' + ID] = false;
     if (window.__bookbslGa4Loaded) return;
     window.__bookbslGa4Loaded = true;
     window['ga-disable-' + ID] = false;
