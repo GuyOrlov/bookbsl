@@ -18,8 +18,8 @@ GUIDE_PAGES = {
 }
 
 STYLE_ID = "bookbsl-global-nav-footer-20260912"
-HEADER_STYLESHEET = '<link rel="stylesheet" href="bookbsl-header.css?v=20260912-2">'
-HEADER_SCRIPT = '<script src="bookbsl-header.js?v=20260912-1" defer></script>'
+HEADER_STYLESHEET = '<link rel="stylesheet" href="bookbsl-header.css?v=20261004-1">'
+HEADER_SCRIPT = '<script src="bookbsl-header.js?v=20261004-1" defer></script>'
 
 STYLE = f'''<style id="{STYLE_ID}">
 /* Shared BookBSL footer. Header/navigation is controlled only by bookbsl-header.css. */
@@ -81,7 +81,9 @@ def header_for(name: str) -> str:
     guide_current = ' aria-current="page"' if name in GUIDE_PAGES else ''
     prep_current = ' aria-current="page"' if name == "awareness.html" else ''
     pricing_current = ' aria-current="page"' if name == "bsl-interpreter-cost.html" else ''
-    return f'''<header class="top"><div class="shell topin"><a class="brand" href="./"><span class="brandmark">BSL</span><span>Book<b>BSL</b><small class="brandSub">A cSeeker service</small></span></a><nav class="topnav" aria-label="Main navigation"><a href="./#guides"{guide_current}>Guides</a><a href="bsl-interpreter-cost.html"{pricing_current}>Pricing</a><a href="awareness.html"{prep_current}>Access preparation</a><a class="header-cta navCta" href="./#checker"><span class="desktopCtaText">Start booking</span><span class="mobileCtaText">Start booking</span></a></nav></div></header>'''
+    data_current = ' aria-current="page"' if name == "data.html" else ''
+    law_current = ' aria-current="page"' if name == "law.html" else ''
+    return f'''<header class="top"><div class="shell topin"><a class="brand" href="./"><span class="brandmark">BSL</span><span>Book<b>BSL</b><small class="brandSub">A cSeeker service</small></span></a><nav class="topnav" aria-label="Main navigation"><a href="./#guides"{guide_current}>Guides</a><a href="bsl-interpreter-cost.html"{pricing_current}>Pricing</a><a href="awareness.html"{prep_current}>Access preparation</a><a href="data.html"{data_current}>Data</a><a href="law.html"{law_current}>Laws</a><a class="header-cta navCta" href="./#checker"><span class="desktopCtaText">Start booking</span><span class="mobileCtaText">Start booking</span></a></nav></div></header>'''
 
 
 def replace_footer_style(text: str) -> str:
