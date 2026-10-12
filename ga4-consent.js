@@ -109,6 +109,16 @@
   if (readChoice() === 'granted') loadAnalytics();
   else stopAnalytics();
 
+  // Track contact intent only after analytics consent. This is not a confirmed booking.
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest('a[href^="mailto:"]');
+    if (!link || readChoice() !== 'granted' || typeof window.gtag !== 'function') return;
+    window.gtag('event', 'contact_email_click', {
+      contact_method: 'email',
+      link_location: link.id === 'quoteBtn' ? 'booking_summary' : 'site_link'
+    });
+  });
+
   const ready = () => {
     bindSettingsPage();
     if (!readChoice()) showBanner();
