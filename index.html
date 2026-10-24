@@ -1074,7 +1074,7 @@ function setupUnknownField(checkId,inputId,boxId){const check=qs('#'+checkId),in
 setupUnknownField('dateUnknown','date','dateBox');setupUnknownField('locationUnknown','location','locationBox');
 const COUNTER='https://countapi.mileshilliard.com/api/v1';
 const counterKeys={visits:'bookbsl-guyorlov-202609-visits',starts:'bookbsl-guyorlov-202609-starts',finishes:'bookbsl-guyorlov-202609-finishes',quotes:'bookbsl-guyorlov-202609-quotes'};
-function track(name,props={}){try{if(typeof window.gtag==='function')window.gtag('event',name,props);if(typeof window.plausible==='function')window.plausible(name,{props})}catch(e){}}
+function track(name,props={}){try{if(window.BookBSLAnalyticsConsent?.status()!=='granted')return;if(typeof window.gtag==='function')window.gtag('event',name,props);if(typeof window.plausible==='function')window.plausible(name,{props})}catch(e){}}
 async function counterGet(type){try{const r=await fetch(`${COUNTER}/get/${counterKeys[type]}`);if(r.status===404)return 0;if(!r.ok)throw 0;const j=await r.json();return Number(j.value ?? j.count ?? 0)}catch{return null}}
 async function counterHit(type){try{const r=await fetch(`${COUNTER}/hit/${counterKeys[type]}`);if(!r.ok)throw 0;const j=await r.json();const n=Number(j.value ?? j.count ?? 0);if(qs('#'+type))qs('#'+type).textContent=n.toLocaleString('en-GB');return n}catch{return null}}
 async function loadCounters(){for(const type of Object.keys(counterKeys)){const n=await counterGet(type);if(qs('#'+type))qs('#'+type).textContent=n===null?'—':n.toLocaleString('en-GB')}}
@@ -1088,7 +1088,7 @@ document.querySelectorAll('[data-booking-type]').forEach(btn=>btn.addEventListen
   const input=[...document.querySelectorAll('input[name="bookingType"]')].find(x=>x.value===type);
   if(!input)return;
   input.checked=true;
-  if(!started){started=true;track('checklist_start',{source:'hero_booking_type'});if(oncePerSession('starts'))counterHit('starts')}
+  if(!started){started=true;track('checklist_start',{cta_location:'hero_booking_type'});if(oncePerSession('starts'))counterHit('starts')}
   track('hero_booking_type',{booking_type:type});
   step=2;
   showStep(false);
@@ -1099,7 +1099,7 @@ function radio(name){const x=qs(`input[name="${name}"]:checked`);return x?x.valu
 function activeQuestion(){return qs(`.q[data-step="${step}"]`)}
 function showStep(moveFocus=false){steps.forEach(s=>{const on=Number(s.dataset.step)===step;s.classList.toggle('active',on);s.setAttribute('aria-hidden',on?'false':'true')});progressText.textContent=`Step ${step} of 9`;progressBar.style.width=`${(step/9)*100}%`;backBtn.hidden=step===1;nextBtn.textContent=step===9?'See my booking summary →':'Continue →';error.textContent='';track('checklist_step_view',{step});if(moveFocus){const q=activeQuestion();requestAnimationFrame(()=>q.scrollIntoView({behavior:'smooth',block:'start'}));setTimeout(()=>q.querySelector('input,button,textarea,select')?.focus({preventScroll:true}),250)}}
 function validStep(){const rr={1:'bookingType',3:'format',4:'deafUsers',5:'preference',6:'supportType',7:'supportCount',8:'recording',9:'prep'};if(rr[step]&&!radio(rr[step]))return'Please choose an option before continuing.';if(step===2&&((!val('date')&&!qs('#dateUnknown')?.checked)||(!val('startTime')&&!qs('#startTimeUnknown')?.checked)||(!val('endTime')&&!qs('#endTimeUnknown')?.checked)))return'Please add the date and times you know, or choose “Not confirmed yet”.';if(step===3&&!val('location')&&!qs('#locationUnknown')?.checked)return'Please add the venue or platform, or choose “Location or platform not confirmed yet”.';return''}
-nextBtn.addEventListener('click',()=>{const msg=validStep();if(msg){error.textContent=msg;error.scrollIntoView({behavior:'smooth',block:'center'});return}if(!started){started=true;track('checklist_start');if(oncePerSession('starts'))counterHit('starts')}track('checklist_step_complete',{step});if(step<9){step++;showStep(true);return}buildResults()});backBtn.addEventListener('click',()=>{if(step>1){step--;showStep(true)}});
+nextBtn.addEventListener('click',()=>{const msg=validStep();if(msg){error.textContent=msg;error.scrollIntoView({behavior:'smooth',block:'center'});return}if(!started){started=true;track('checklist_start',{cta_location:'checklist_continue'});if(oncePerSession('starts'))counterHit('starts')}track('checklist_step_complete',{step});if(step<9){step++;showStep(true);return}buildResults()});backBtn.addEventListener('click',()=>{if(step>1){step--;showStep(true)}});
 function timeOrderIssue(start,end){if(!start||!end)return false;const[sh,sm]=start.split(':').map(Number),[eh,em]=end.split(':').map(Number);return eh*60+em<=sh*60+sm}
 function minutesBetween(start,end){if(!start||!end||timeOrderIssue(start,end))return null;const[sh,sm]=start.split(':').map(Number),[eh,em]=end.split(':').map(Number);return(eh*60+em)-(sh*60+sm)}
 function prettyDate(v){if(!v)return'Not provided';const d=new Date(v+'T12:00:00');return new Intl.DateTimeFormat('en-GB',{day:'numeric',month:'long',year:'numeric'}).format(d)}
